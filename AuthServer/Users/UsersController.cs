@@ -2,6 +2,8 @@
 using AuthServer.Users.responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Transactions; // Não se esqueça de adicionar o namespace
+
 
 namespace AuthServer.Users
 {

@@ -1,28 +1,38 @@
-﻿namespace AuthServer.Users
-{
-    public class UsersRepository
-    {
-        //Lista interna que armazena os usuários
-        private List<User> Users { get; set; } = new List<User>();
+﻿using Microsoft.EntityFrameworkCore;
 
-        // Método para salvar um novo usuário
+namespace AuthServer.Users
+{
+    public interface IUsersRepository
+    {
+        User Save(User user);
+        User GetById(long id);
+        List<User> FindAll();
+    }
+
+    public class UsersRepository : IUsersRepository
+    {
+        private readonly AuthServerContext _context; // Substitua YourDbContext pelo nome do seu DbContext
+
+        public UsersRepository(AuthServerContext context)
+        {
+            _context = context;
+        }
+
         public User Save(User user)
         {
-            user.ID = Users.Count + 1; // Atribui um ID único com base na contagem atual
-            Users.Add(user); // Adiciona o usuário à lista
-            return user; // Retorna o usuário salvo
+            _context.Users.Add(user);
+            _context.SaveChanges(); // Salva as alterações no banco de dados
+            return user;
         }
 
-        // Método para recuperar um usuário pelo ID
         public User GetById(long id)
         {
-            return Users.FirstOrDefault(x => x.ID == id); // Retorna o primeiro usuário que corresponde ao ID ou null
+            return _context.Users.FirstOrDefault(u => u.ID == id);
         }
 
-        // Método para recuperar todos os usuários
         public List<User> FindAll()
         {
-            return Users; // Retorna a lista de usuários
+            return _context.Users.ToList();
         }
     }
 }

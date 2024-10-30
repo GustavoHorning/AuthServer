@@ -1,5 +1,5 @@
-
 using AuthServer.Users;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuthServer
 {
@@ -9,16 +9,19 @@ namespace AuthServer
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Configurando a string de conexão
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<AuthServerContext>(options =>
+                options.UseSqlServer(connectionString)); // Adiciona o DbContext com a string de conexão
 
+            // Add services to the container.
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             // Registrando UsersRepository e UsersService como serviços
-            builder.Services.AddSingleton<UsersRepository>(); // Mudança aqui
             builder.Services.AddTransient<UsersService>();
+            builder.Services.AddTransient<UsersRepository>(); // Utilize o UsersRepository como um serviço
 
             var app = builder.Build();
 
@@ -30,10 +33,7 @@ namespace AuthServer
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
