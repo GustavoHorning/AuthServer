@@ -23,6 +23,10 @@ namespace AuthServer
             builder.Services.AddTransient<UsersService>();
             builder.Services.AddTransient<UsersRepository>(); // Utilize o UsersRepository como um serviço
 
+            // Adicione o UsersBootstrap ao pipeline de serviços
+            builder.Services.AddHostedService<UsersBootstrap>();
+            builder.Services.AddTransient<RoleRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

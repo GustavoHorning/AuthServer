@@ -23,6 +23,8 @@ namespace AuthServer.Users
         [Required] // Garante que o campo não seja nulo
         public string Name { get; set; } = string.Empty;
 
+        // Relacionamento muitos-para-muitos com Role
+        public HashSet<Role> Roles { get; set; } = new HashSet<Role>();
         public UserResponse ToResponse() => new UserResponse(ID, Name, Email);
 
 
