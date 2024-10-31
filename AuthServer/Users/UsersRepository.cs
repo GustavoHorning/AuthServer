@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+
 namespace AuthServer.Users
 {
     public interface IUsersRepository
@@ -7,6 +8,8 @@ namespace AuthServer.Users
         User Save(User user);
         User GetById(long id);
         List<User> FindAll();
+        List<User> FindAllByRole(string role); // Novo método para buscar usuários por role
+
     }
 
     public class UsersRepository : IUsersRepository
@@ -32,7 +35,18 @@ namespace AuthServer.Users
 
         public List<User> FindAll()
         {
-            return _context.Users.ToList();
+            return _context.Users.Include(user => user.Roles).ToList();
         }
+
+        public List<User> FindAllByRole(string role)
+        {
+            return _context.Users
+                .Include(u => u.Roles)
+                .Where(u => u.Roles.Any(r => r.Name == role)) // Filtra pela role específica
+                .OrderBy(u => u.Name) // Ordena por nome
+                .Distinct()
+                .ToList();
+        }
+
     }
 }
