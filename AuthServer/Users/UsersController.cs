@@ -33,7 +33,6 @@ namespace AuthServer.Users
 
 
         // POST: /api/users
-        // POST: /api/users
         [HttpPost]
         public ActionResult<UserResponse> CreateUser([FromBody, BindRequired] UserRequest req)
         {
