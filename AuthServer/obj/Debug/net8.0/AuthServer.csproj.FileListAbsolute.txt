@@ -140,3 +140,6 @@ C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\ru\Microsoft.
 C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Newtonsoft.Json.dll

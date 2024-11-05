@@ -13,6 +13,9 @@ namespace AuthServer
         public DbSet<User> Users { get; set; } // DbSet para a entidade User
         public DbSet<Role> Roles { get; set; } // DbSet para a entidade Roles
 
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Mapeando a classe User para a tabela "Users"

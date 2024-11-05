@@ -13,6 +13,5 @@ namespace AuthServer.Users
         // Relacionamento muitos-para-muitos com User
         public HashSet<User> Users { get; set; } = new HashSet<User>();
 
-
     }
 }

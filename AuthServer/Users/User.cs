@@ -25,7 +25,10 @@ namespace AuthServer.Users
 
         // Relacionamento muitos-para-muitos com Role
         public HashSet<Role> Roles { get; set; } = new HashSet<Role>();
-        public UserResponse ToResponse() => new UserResponse(ID, Name, Email);
+        public UserResponse ToResponse()
+        {
+            return new UserResponse(ID, Name, Email);
+        }
 
 
 
