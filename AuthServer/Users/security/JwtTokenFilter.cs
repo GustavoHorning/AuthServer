@@ -4,6 +4,8 @@ using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using AuthServer.Security;
+
 
 public class JwtTokenFilter : IMiddleware
 {

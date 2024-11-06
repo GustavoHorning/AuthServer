@@ -143,3 +143,15 @@ C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\zh-Hant\Micro
 C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
 C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Extensions.Logging.File.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Sinks.Async.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Sinks.File.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Sinks.RollingFile.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\gusta\source\repos\AuthServer\AuthServer\bin\Debug\net8.0\Serilog.Sinks.Debug.dll

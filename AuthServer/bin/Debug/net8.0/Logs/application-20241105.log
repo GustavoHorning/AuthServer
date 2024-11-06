@@ -1,0 +1,78 @@
+2024-11-05T20:02:03.5368211-03:00  [INF] User profile is available. Using '"C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2024-11-05T20:02:04.2462020-03:00  [INF] Executed DbCommand ("20"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Roles] AS [r]" (0723d8ff)
+2024-11-05T20:02:04.3343835-03:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]" (0723d8ff)
+2024-11-05T20:02:04.4414364-03:00  [INF] Now listening on: "https://localhost:7011" (d826f4b8)
+2024-11-05T20:02:04.4414763-03:00  [INF] Now listening on: "http://localhost:5091" (d826f4b8)
+2024-11-05T20:02:04.4436076-03:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-11-05T20:02:04.4440039-03:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2024-11-05T20:02:04.4440391-03:00  [INF] Content root path: "C:\Users\gusta\source\repos\AuthServer\AuthServer" (cc26f24e)
+2024-11-05T20:02:04.9693615-03:00 0HN7TTNERFSLM:00000001 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/index.html""" - null null (d509f86a)
+2024-11-05T20:02:05.0649146-03:00 0HN7TTNERFSLM:00000001 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 96.8894ms (74253ad3)
+2024-11-05T20:02:05.1569161-03:00 0HN7TTNERFSLM:00000003 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/index.js""" - null null (d509f86a)
+2024-11-05T20:02:05.1569169-03:00 0HN7TTNERFSLM:00000005 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/_framework/aspnetcore-browser-refresh.js""" - null null (d509f86a)
+2024-11-05T20:02:05.1583681-03:00 0HN7TTNERFSLM:00000003 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 1.4344ms (74253ad3)
+2024-11-05T20:02:05.1617489-03:00 0HN7TTNERFSLM:00000005 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/_framework/aspnetcore-browser-refresh.js""" - 200 13756 "application/javascript; charset=utf-8" 4.8346ms (74253ad3)
+2024-11-05T20:02:05.2456953-03:00 0HN7TTNERFSLM:00000007 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/_vs/browserLink""" - null null (d509f86a)
+2024-11-05T20:02:05.2637209-03:00 0HN7TTNERFSLM:00000007 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 18.0198ms (74253ad3)
+2024-11-05T20:02:05.3155979-03:00 0HN7TTNERFSLM:00000009 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/v1/swagger.json""" - null null (d509f86a)
+2024-11-05T20:02:05.3884478-03:00 0HN7TTNERFSLM:00000009 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 72.8394ms (74253ad3)
+2024-11-05T20:02:27.0584388-03:00 0HN7TTNERFSLN:00000001 [INF] Request starting "HTTP/2" "POST" "https"://"localhost:7011""""/api/users/login""" - "application/json" 60 (d509f86a)
+2024-11-05T20:02:27.0623236-03:00 0HN7TTNERFSLN:00000001 [INF] CORS policy execution successful. (5409d6ef)
+2024-11-05T20:02:27.0928134-03:00 0HN7TTNERFSLN:00000001 [INF] Executing endpoint '"AuthServer.Users.UsersController.Login (AuthServer)"' (500cc934)
+2024-11-05T20:02:27.1042209-03:00 0HN7TTNERFSLN:00000001 [INF] Route matched with "{action = \"Login\", controller = \"Users\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Login(AuthServer.Users.LoginRequest)" on controller "AuthServer.Users.UsersController" ("AuthServer"). (122b2fdf)
+2024-11-05T20:02:27.1587257-03:00 0HN7TTNERFSLN:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=["@__email_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]" (0723d8ff)
+2024-11-05T20:02:27.1604098-03:00 0HN7TTNERFSLN:00000001 [INF] User logged in. id=16 name="Auth Server Administrator" (661c189a)
+2024-11-05T20:02:27.2163458-03:00 0HN7TTNERFSLN:00000001 [INF] Executing "OkObjectResult", writing value of type '"LoginResponse"'. (605b4265)
+2024-11-05T20:02:27.2243937-03:00 0HN7TTNERFSLN:00000001 [INF] Executed action "AuthServer.Users.UsersController.Login (AuthServer)" in 117.803ms (afa2e885)
+2024-11-05T20:02:27.2244898-03:00 0HN7TTNERFSLN:00000001 [INF] Executed endpoint '"AuthServer.Users.UsersController.Login (AuthServer)"' (99874f2b)
+2024-11-05T20:02:27.2270515-03:00 0HN7TTNERFSLN:00000001 [INF] Request finished "HTTP/2" "POST" "https"://"localhost:7011""""/api/users/login""" - 200 null "application/json; charset=utf-8" 168.6842ms (74253ad3)
+2024-11-05T20:04:51.1986647-03:00  [INF] User profile is available. Using '"C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2024-11-05T20:04:51.9543746-03:00  [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Roles] AS [r]" (0723d8ff)
+2024-11-05T20:04:52.0621184-03:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]" (0723d8ff)
+2024-11-05T20:04:52.1942403-03:00  [INF] Now listening on: "https://localhost:7011" (d826f4b8)
+2024-11-05T20:04:52.1943501-03:00  [INF] Now listening on: "http://localhost:5091" (d826f4b8)
+2024-11-05T20:04:52.1983421-03:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-11-05T20:04:52.1991901-03:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2024-11-05T20:04:52.1993138-03:00  [INF] Content root path: "C:\Users\gusta\source\repos\AuthServer\AuthServer" (cc26f24e)
+2024-11-05T20:04:52.3634735-03:00 0HN7TTP0OA0N3:00000001 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/index.html""" - null null (d509f86a)
+2024-11-05T20:04:52.4646192-03:00 0HN7TTP0OA0N3:00000001 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 102.2322ms (74253ad3)
+2024-11-05T20:04:52.5437515-03:00 0HN7TTP0OA0N3:00000005 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/index.js""" - null null (d509f86a)
+2024-11-05T20:04:52.5437516-03:00 0HN7TTP0OA0N3:00000003 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/_framework/aspnetcore-browser-refresh.js""" - null null (d509f86a)
+2024-11-05T20:04:52.5454532-03:00 0HN7TTP0OA0N3:00000005 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/index.js""" - 200 null "application/javascript;charset=utf-8" 1.6918ms (74253ad3)
+2024-11-05T20:04:52.5488833-03:00 0HN7TTP0OA0N3:00000003 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/_framework/aspnetcore-browser-refresh.js""" - 200 13756 "application/javascript; charset=utf-8" 5.113ms (74253ad3)
+2024-11-05T20:04:52.6706285-03:00 0HN7TTP0OA0N3:00000007 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/_vs/browserLink""" - null null (d509f86a)
+2024-11-05T20:04:52.6938647-03:00 0HN7TTP0OA0N3:00000007 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 23.2109ms (74253ad3)
+2024-11-05T20:04:52.7411435-03:00 0HN7TTP0OA0N3:00000009 [INF] Request starting "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/v1/swagger.json""" - null null (d509f86a)
+2024-11-05T20:04:52.8308512-03:00 0HN7TTP0OA0N3:00000009 [INF] Request finished "HTTP/2" "GET" "https"://"localhost:7011""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 89.6828ms (74253ad3)

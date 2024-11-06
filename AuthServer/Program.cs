@@ -1,8 +1,11 @@
+using AuthServer.Security;
 using AuthServer.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using System.IO;
 using System.Text;
 
 namespace AuthServer
@@ -11,46 +14,114 @@ namespace AuthServer
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            // Diretório de logs na raiz do projeto
+            var projectDirectory = @"C:\Users\gusta\source\repos\AuthServer\AuthServer"; // Altere para o caminho base do projeto
+            var logDirectory = Path.Combine(projectDirectory, "Logs");
 
-            // Configurando a string de conexão
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<AuthServerContext>(options =>
-                options.UseSqlServer(connectionString)); // Adiciona o DbContext com a string de conexão
-
-            // Add services to the container.
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddAuthentication();
-            builder.Services.AddSecurityConfig(builder.Configuration);
-            builder.Services.AddSingleton<JwtTokenFilter>(); // Registrando o middleware como serviço
-            builder.Services.AddTransient<Jwt>(); // Registra o serviço Jwt
-            builder.Services.AddTransient<UsersService>();
-            builder.Services.AddTransient<UsersRepository>(); // Utilize o UsersRepository como um serviço
-            builder.Services.AddHostedService<UsersBootstrap>();
-            builder.Services.AddTransient<RoleRepository>();
-            builder.Logging.ClearProviders();
-            builder.Logging.AddConsole();
-
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            // Verificação e criação do diretório de logs
+            Console.WriteLine($"Verificando diretório de logs: {logDirectory}");
+            if (!Directory.Exists(logDirectory))
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                try
+                {
+                    Directory.CreateDirectory(logDirectory);
+                    Console.WriteLine("Diretório de logs criado com sucesso.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Falha ao criar o diretório de logs: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Diretório de logs já existe.");
             }
 
-            app.UseMiddleware<JwtTokenFilter>();
-            app.UseHttpsRedirection();
-            app.UseCors("DefaultPolicy"); // Aplicando política de CORS
-            app.UseAuthentication(); // Middleware para autenticação
-            app.UseAuthorization();  // Middleware para autorização
-            app.MapControllers();
+            // Caminho completo do arquivo de log
+            var logFilePath = Path.Combine(logDirectory, "application.log");
+            Console.WriteLine($"Caminho completo do arquivo de log: {logFilePath}");
 
-            app.Run();
+            // Configuração do Serilog para console e arquivo de log
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()  // Console logging
+                .WriteTo.File(logFilePath, rollingInterval: RollingInterval.Day, retainedFileCountLimit: 7)
+                .CreateLogger();
+
+            // Log de inicialização
+            Log.Information("Aplicação iniciada - configuração de logs inicializada.");
+
+            try
+            {
+                var builder = WebApplication.CreateBuilder(args);
+
+                // Configura Serilog para o projeto inteiro
+                builder.Host.UseSerilog();
+
+                // Configuração da string de conexão
+                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+                builder.Services.AddDbContext<AuthServerContext>(options =>
+                    options.UseSqlServer(connectionString));
+
+                // Adiciona serviços ao container
+                builder.Services.AddControllers();
+                builder.Services.AddEndpointsApiExplorer();
+                builder.Services.AddSwaggerGen();
+                builder.Services.AddAuthentication();
+                builder.Services.AddSecurityConfig(builder.Configuration);
+                builder.Services.AddSingleton<JwtTokenFilter>();
+                builder.Services.AddTransient<Jwt>();
+                builder.Services.AddTransient<UsersService>();
+                builder.Services.AddTransient<UsersRepository>();
+                builder.Services.AddHostedService<UsersBootstrap>();
+                builder.Services.AddTransient<RoleRepository>();
+                builder.Services.Configure<SecuritySettings>(builder.Configuration.GetSection("Security"));
+                builder.Services.AddSingleton<Jwt>();
+
+
+
+
+
+                var app = builder.Build();
+
+                // Configurações de desenvolvimento
+                if (app.Environment.IsDevelopment())
+                {
+                    app.UseSwagger();
+                    app.UseSwaggerUI();
+                }
+
+                app.UseMiddleware<JwtTokenFilter>();
+                app.UseHttpsRedirection();
+                app.UseCors("DefaultPolicy");
+                app.UseAuthentication();
+                app.UseAuthorization();
+                app.MapControllers();
+
+                // Exceções personalizadas
+                app.Use(async (context, next) =>
+                {
+                    try
+                    {
+                        await next();
+                    }
+                    catch (BadRequestException ex)
+                    {
+                        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                        await context.Response.WriteAsync(ex.Message);
+                    }
+                });
+
+                app.Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "A aplicação falhou ao iniciar.");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
     }
 }

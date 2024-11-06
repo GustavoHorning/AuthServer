@@ -1,0 +1,1824 @@
+2024-11-05 20:19:05.818 -03:00 [INF] User profile is available. Using 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-05 20:19:06.548 -03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:19:06.636 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:19:06.744 -03:00 [INF] Now listening on: https://localhost:7011
+2024-11-05 20:19:06.745 -03:00 [INF] Now listening on: http://localhost:5091
+2024-11-05 20:19:06.747 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-05 20:19:06.747 -03:00 [INF] Hosting environment: Development
+2024-11-05 20:19:06.748 -03:00 [INF] Content root path: C:\Users\gusta\source\repos\AuthServer\AuthServer
+2024-11-05 20:19:07.269 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.html - null null
+2024-11-05 20:19:07.368 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.html - 200 null text/html;charset=utf-8 99.5448ms
+2024-11-05 20:19:07.386 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_vs/browserLink - null null
+2024-11-05 20:19:07.386 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.js - null null
+2024-11-05 20:19:07.387 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-05 20:19:07.393 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.js - 200 null application/javascript;charset=utf-8 6.0645ms
+2024-11-05 20:19:07.398 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 10.5453ms
+2024-11-05 20:19:07.408 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.4686ms
+2024-11-05 20:19:07.595 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - null null
+2024-11-05 20:19:07.671 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.4989ms
+2024-11-05 20:19:37.909 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7011/api/users/login - application/json 60
+2024-11-05 20:19:37.916 -03:00 [INF] CORS policy execution successful.
+2024-11-05 20:19:37.949 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:19:37.962 -03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AuthServer.Users.LoginRequest) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:19:38.018 -03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:19:38.022 -03:00 [INF] User logged in. id=16 name=Auth Server Administrator
+2024-11-05 20:19:38.086 -03:00 [INF] Executing OkObjectResult, writing value of type 'LoginResponse'.
+2024-11-05 20:19:38.096 -03:00 [INF] Executed action AuthServer.Users.UsersController.Login (AuthServer) in 129.8686ms
+2024-11-05 20:19:38.097 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:19:38.100 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7011/api/users/login - 200 null application/json; charset=utf-8 191.1024ms
+2024-11-05 20:19:53.615 -03:00 [INF] User profile is available. Using 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-05 20:19:54.253 -03:00 [INF] User profile is available. Using 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-05 20:19:54.951 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:19:55.042 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:19:55.147 -03:00 [INF] Now listening on: https://localhost:7011
+2024-11-05 20:19:55.148 -03:00 [INF] Now listening on: http://localhost:5091
+2024-11-05 20:19:55.150 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-05 20:19:55.151 -03:00 [INF] Hosting environment: Development
+2024-11-05 20:19:55.151 -03:00 [INF] Content root path: C:\Users\gusta\source\repos\AuthServer\AuthServer
+2024-11-05 20:19:55.405 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.html - null null
+2024-11-05 20:19:55.502 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.html - 200 null text/html;charset=utf-8 97.6207ms
+2024-11-05 20:19:55.520 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.js - null null
+2024-11-05 20:19:55.520 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-05 20:19:55.520 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_vs/browserLink - null null
+2024-11-05 20:19:55.525 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.js - 200 null application/javascript;charset=utf-8 4.4767ms
+2024-11-05 20:19:55.531 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 10.8991ms
+2024-11-05 20:19:55.552 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.4696ms
+2024-11-05 20:19:55.751 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - null null
+2024-11-05 20:19:55.824 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 73.2204ms
+2024-11-05 20:24:24.370 -03:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-11-05 20:24:24.430 -03:00 [DBG] Hosting starting
+2024-11-05 20:24:24.441 -03:00 [INF] User profile is available. Using 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-05 20:24:24.446 -03:00 [DBG] Reading data from file 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys\key-bf4636f6-ef08-4ac9-8613-5c8299c406a4.xml'.
+2024-11-05 20:24:24.453 -03:00 [DBG] Found key {bf4636f6-ef08-4ac9-8613-5c8299c406a4}.
+2024-11-05 20:24:24.458 -03:00 [DBG] Considering key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} with expiration date 2025-02-02 14:46:39Z as default key.
+2024-11-05 20:24:24.460 -03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-11-05 20:24:24.462 -03:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-11-05 20:24:24.463 -03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-11-05 20:24:24.467 -03:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-11-05 20:24:24.468 -03:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-11-05 20:24:24.469 -03:00 [DBG] Using key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} as the default key.
+2024-11-05 20:24:24.470 -03:00 [DBG] Key ring with default key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} was loaded during application startup.
+2024-11-05 20:24:24.524 -03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2024-11-05 20:24:24.771 -03:00 [DBG] The index {'RoleId'} was not created on entity type 'UserRole (Dictionary<string, object>)' as the properties are already covered by the index {'RoleId', 'UserId'}.
+2024-11-05 20:24:24.902 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:24:24.938 -03:00 [DBG] Compiling query expression: 
+'DbSet<Role>()
+    .Count()'
+2024-11-05 20:24:25.045 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<int>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> 0
+        SELECT COUNT(*)
+        FROM Roles AS r), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, int>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)
+    .Single()'
+2024-11-05 20:24:25.059 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:24:25.070 -03:00 [DBG] Created DbConnection. (9ms).
+2024-11-05 20:24:25.071 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.168 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.170 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:24:25.175 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (3ms).
+2024-11-05 20:24:25.178 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (7ms).
+2024-11-05 20:24:25.183 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:24:25.208 -03:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:24:25.217 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.223 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 9ms reading results.
+2024-11-05 20:24:25.225 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.230 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (5ms).
+2024-11-05 20:24:25.236 -03:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Include(user => user.Roles)'
+2024-11-05 20:24:25.249 -03:00 [DBG] Including navigation: 'User.Roles'.
+2024-11-05 20:24:25.329 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<User>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.ID (long) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.Name (string) Required, 2], [Property: User.Password (string) Required, 3] }
+            1 -> 0
+            2 -> Dictionary<IProperty, int> { [Property: UserRole (Dictionary<string, object>).RoleId (no field, int) Indexer Required PK FK AfterSave:Throw, 4], [Property: UserRole (Dictionary<string, object>).UserId (no field, long) Indexer Required PK FK Index AfterSave:Throw, 5] }
+            3 -> Dictionary<IProperty, int> { [Property: Role.Long (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 6], [Property: Role.Name (string) Required Index, 7] }
+            4 -> 4
+            5 -> 5
+            6 -> 6
+        SELECT u.ID, u.Email, u.Name, u.Password, t.RoleId, t.UserId, t.Long, t.Name
+        FROM Users AS u
+        LEFT JOIN 
+        (
+            SELECT u0.RoleId, u0.UserId, r.Long, r.Name
+            FROM UserRole AS u0
+            INNER JOIN Roles AS r ON u0.RoleId == r.Long
+        ) AS t ON u.ID == t.UserId
+        ORDER BY u.ID ASC, t.RoleId ASC, t.UserId ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, User>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)'
+2024-11-05 20:24:25.334 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.336 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.336 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:24:25.337 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:24:25.338 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:24:25.339 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:24:25.344 -03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:24:25.365 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:25.387 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:25.398 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:25.401 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:25.402 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:25.403 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:25.404 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.405 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 58ms reading results.
+2024-11-05 20:24:25.406 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.406 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:24:25.408 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:24:25.409 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:25.411 -03:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2024-11-05 20:24:25.476 -03:00 [INF] Now listening on: https://localhost:7011
+2024-11-05 20:24:25.476 -03:00 [INF] Now listening on: http://localhost:5091
+2024-11-05 20:24:25.477 -03:00 [DBG] Loaded hosting startup assembly AuthServer
+2024-11-05 20:24:25.478 -03:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-11-05 20:24:25.478 -03:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-11-05 20:24:25.479 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-05 20:24:25.479 -03:00 [INF] Hosting environment: Development
+2024-11-05 20:24:25.480 -03:00 [INF] Content root path: C:\Users\gusta\source\repos\AuthServer\AuthServer
+2024-11-05 20:24:25.480 -03:00 [DBG] Hosting started
+2024-11-05 20:24:25.506 -03:00 [DBG] Connection id "0HN7TU3UCQNNU" received FIN.
+2024-11-05 20:24:25.510 -03:00 [DBG] Connection id "0HN7TU3UCQNNU" accepted.
+2024-11-05 20:24:25.511 -03:00 [DBG] Connection id "0HN7TU3UCQNNU" started.
+2024-11-05 20:24:25.519 -03:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-11-05 20:24:25.539 -03:00 [DBG] Connection id "0HN7TU3UCQNNU" stopped.
+2024-11-05 20:24:25.541 -03:00 [DBG] Connection id "0HN7TU3UCQNNU" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:24:25.621 -03:00 [DBG] Connection id "0HN7TU3UCQNNV" accepted.
+2024-11-05 20:24:25.622 -03:00 [DBG] Connection id "0HN7TU3UCQNNV" started.
+2024-11-05 20:24:25.639 -03:00 [DBG] Connection 0HN7TU3UCQNNV established using the following protocol: "Tls13"
+2024-11-05 20:24:25.661 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.html - null null
+2024-11-05 20:24:25.703 -03:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-11-05 20:24:25.717 -03:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-11-05 20:24:25.718 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:24:25.761 -03:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-11-05 20:24:25.762 -03:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-11-05 20:24:25.766 -03:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-11-05 20:24:25.767 -03:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-11-05 20:24:25.770 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.html - 200 null text/html;charset=utf-8 109.0334ms
+2024-11-05 20:24:25.803 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.js - null null
+2024-11-05 20:24:25.803 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-05 20:24:25.806 -03:00 [DBG] No candidates found for the request path '/swagger/index.js'
+2024-11-05 20:24:25.808 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:24:25.810 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.js - 200 null application/javascript;charset=utf-8 6.3424ms
+2024-11-05 20:24:25.813 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 9.2601ms
+2024-11-05 20:24:25.857 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_vs/browserLink - null null
+2024-11-05 20:24:25.876 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.0585ms
+2024-11-05 20:24:25.918 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - null null
+2024-11-05 20:24:25.920 -03:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-11-05 20:24:25.921 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:24:25.998 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 79.1375ms
+2024-11-05 20:24:29.441 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.html - null null
+2024-11-05 20:24:29.445 -03:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-11-05 20:24:29.446 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:24:29.447 -03:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-11-05 20:24:29.448 -03:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-11-05 20:24:29.449 -03:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-11-05 20:24:29.449 -03:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-11-05 20:24:29.450 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.html - 200 null text/html;charset=utf-8 9.0934ms
+2024-11-05 20:24:29.464 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.js - null null
+2024-11-05 20:24:29.466 -03:00 [DBG] No candidates found for the request path '/swagger/index.js'
+2024-11-05 20:24:29.467 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_vs/browserLink - null null
+2024-11-05 20:24:29.467 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:24:29.469 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-05 20:24:29.471 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.js - 200 null application/javascript;charset=utf-8 6.4616ms
+2024-11-05 20:24:29.474 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 5.0136ms
+2024-11-05 20:24:29.481 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_vs/browserLink - 200 null text/javascript; charset=UTF-8 12.9317ms
+2024-11-05 20:24:29.529 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - null null
+2024-11-05 20:24:29.531 -03:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-11-05 20:24:29.531 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:24:29.536 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.3297ms
+2024-11-05 20:24:30.745 -03:00 [DBG] Connection id "0HN7TU3UCQNNV" received FIN.
+2024-11-05 20:24:30.748 -03:00 [DBG] The connection queue processing loop for 0HN7TU3UCQNNV completed.
+2024-11-05 20:24:30.748 -03:00 [DBG] Connection id "0HN7TU3UCQNNV" is closed. The last processed stream ID was 19.
+2024-11-05 20:24:30.750 -03:00 [DBG] Connection id "0HN7TU3UCQNNV" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:24:30.759 -03:00 [DBG] Connection id "0HN7TU3UCQNNV" stopped.
+2024-11-05 20:24:42.578 -03:00 [DBG] Connection id "0HN7TU3UCQNO0" accepted.
+2024-11-05 20:24:42.579 -03:00 [DBG] Connection id "0HN7TU3UCQNO0" started.
+2024-11-05 20:24:42.582 -03:00 [DBG] Connection 0HN7TU3UCQNO0 established using the following protocol: "Tls13"
+2024-11-05 20:24:42.595 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7011/api/users/login - application/json 60
+2024-11-05 20:24:42.600 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users/login'
+2024-11-05 20:24:42.601 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.Login (AuthServer)' with route pattern 'api/users/login' is valid for the request path '/api/users/login'
+2024-11-05 20:24:42.603 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:24:42.604 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:24:42.606 -03:00 [DBG] The request has an origin header: 'https://localhost:7011'.
+2024-11-05 20:24:42.607 -03:00 [INF] CORS policy execution successful.
+2024-11-05 20:24:42.628 -03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-11-05 20:24:42.631 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:24:42.645 -03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AuthServer.Users.LoginRequest) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:24:42.647 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:24:42.648 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:24:42.650 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:24:42.651 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:24:42.651 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:24:42.653 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:24:42.655 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:24:42.660 -03:00 [DBG] Attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest' ...
+2024-11-05 20:24:42.662 -03:00 [DBG] Attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest' using the name '' in request data ...
+2024-11-05 20:24:42.664 -03:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-11-05 20:24:42.673 -03:00 [DBG] Connection id "0HN7TU3UCQNO0", Request id "0HN7TU3UCQNO0:00000001": started reading request body.
+2024-11-05 20:24:42.674 -03:00 [DBG] Connection id "0HN7TU3UCQNO0", Request id "0HN7TU3UCQNO0:00000001": done reading request body.
+2024-11-05 20:24:42.676 -03:00 [DBG] JSON input formatter succeeded, deserializing to type 'AuthServer.Users.LoginRequest'
+2024-11-05 20:24:42.677 -03:00 [DBG] Done attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:24:42.678 -03:00 [DBG] Done attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:24:42.679 -03:00 [DBG] Attempting to validate the bound parameter 'credentials' of type 'AuthServer.Users.LoginRequest' ...
+2024-11-05 20:24:42.684 -03:00 [DBG] Done attempting to validate the bound parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:24:42.696 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:24:42.700 -03:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Include(u => u.Roles)
+    .FirstOrDefault(u => u.Email == __email_0)'
+2024-11-05 20:24:42.702 -03:00 [DBG] Including navigation: 'User.Roles'.
+2024-11-05 20:24:42.713 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<User>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.ID (long) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.Name (string) Required, 2], [Property: User.Password (string) Required, 3] }
+            1 -> 0
+            2 -> Dictionary<IProperty, int> { [Property: UserRole (Dictionary<string, object>).RoleId (no field, int) Indexer Required PK FK AfterSave:Throw, 4], [Property: UserRole (Dictionary<string, object>).UserId (no field, long) Indexer Required PK FK Index AfterSave:Throw, 5] }
+            3 -> Dictionary<IProperty, int> { [Property: Role.Long (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 6], [Property: Role.Name (string) Required Index, 7] }
+            4 -> 4
+            5 -> 5
+            6 -> 6
+        SELECT t.ID, t.Email, t.Name, t.Password, t0.RoleId, t0.UserId, t0.Long, t0.Name
+        FROM 
+        (
+            SELECT TOP(1) u.ID, u.Email, u.Name, u.Password
+            FROM Users AS u
+            WHERE u.Email == @__email_0
+        ) AS t
+        LEFT JOIN 
+        (
+            SELECT u0.RoleId, u0.UserId, r.Long, r.Name
+            FROM UserRole AS u0
+            INNER JOIN Roles AS r ON u0.RoleId == r.Long
+        ) AS t0 ON t.ID == t0.UserId
+        ORDER BY t.ID ASC, t0.RoleId ASC, t0.UserId ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, User>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)
+    .SingleOrDefault()'
+2024-11-05 20:24:42.717 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:24:42.717 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:24:42.718 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:42.719 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:42.720 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:24:42.721 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:24:42.723 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (3ms).
+2024-11-05 20:24:42.725 -03:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:24:42.736 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:24:42.738 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:42.739 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:42.740 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:24:42.741 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:42.742 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 3ms reading results.
+2024-11-05 20:24:42.743 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:42.743 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:24:42.744 -03:00 [INF] User logged in. id=16 name=Auth Server Administrator
+2024-11-05 20:24:42.809 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:24:42.811 -03:00 [DBG] No information found on request to perform content negotiation.
+2024-11-05 20:24:42.812 -03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-11-05 20:24:42.813 -03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-11-05 20:24:42.814 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-11-05 20:24:42.815 -03:00 [INF] Executing OkObjectResult, writing value of type 'LoginResponse'.
+2024-11-05 20:24:42.825 -03:00 [INF] Executed action AuthServer.Users.UsersController.Login (AuthServer) in 170.8776ms
+2024-11-05 20:24:42.826 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:24:42.827 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:24:42.830 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:24:42.831 -03:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2024-11-05 20:24:42.833 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7011/api/users/login - 200 null application/json; charset=utf-8 237.3851ms
+2024-11-05 20:24:50.757 -03:00 [DBG] Connection id "0HN7TU3UCQNO0" received FIN.
+2024-11-05 20:24:50.758 -03:00 [DBG] Connection id "0HN7TU3UCQNO0" is closed. The last processed stream ID was 1.
+2024-11-05 20:24:50.758 -03:00 [DBG] The connection queue processing loop for 0HN7TU3UCQNO0 completed.
+2024-11-05 20:24:50.760 -03:00 [DBG] Connection id "0HN7TU3UCQNO0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:24:50.777 -03:00 [DBG] Connection id "0HN7TU3UCQNO0" stopped.
+2024-11-05 20:26:03.022 -03:00 [DBG] Connection id "0HN7TU3UCQNO1" accepted.
+2024-11-05 20:26:03.023 -03:00 [DBG] Connection id "0HN7TU3UCQNO1" started.
+2024-11-05 20:26:03.038 -03:00 [DBG] Connection 0HN7TU3UCQNO1 established using the following protocol: "Tls13"
+2024-11-05 20:26:03.039 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/api/users/me - null null
+2024-11-05 20:26:03.042 -03:00 [DBG] 2 candidate(s) found for the request path '/api/users/me'
+2024-11-05 20:26:03.043 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.GetSelf (AuthServer)' with route pattern 'api/users/me' is valid for the request path '/api/users/me'
+2024-11-05 20:26:03.044 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.GetUser (AuthServer)' with route pattern 'api/users/{id}' is valid for the request path '/api/users/me'
+2024-11-05 20:26:03.045 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.GetSelf (AuthServer)'
+2024-11-05 20:26:03.046 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:26:03.048 -03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-11-05 20:26:03.050 -03:00 [DBG] Policy authentication schemes  did not succeed
+2024-11-05 20:26:03.052 -03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-05 20:26:03.056 -03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-11-05 20:26:03.056 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/api/users/me - 401 0 null 17.0594ms
+2024-11-05 20:26:09.809 -03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7011/api/users/16 - null null
+2024-11-05 20:26:09.810 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users/16'
+2024-11-05 20:26:09.811 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)' with route pattern 'api/users/{id}' is valid for the request path '/api/users/16'
+2024-11-05 20:26:09.812 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)'
+2024-11-05 20:26:09.813 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:26:09.814 -03:00 [DBG] The request has an origin header: 'https://localhost:7011'.
+2024-11-05 20:26:09.815 -03:00 [INF] CORS policy execution successful.
+2024-11-05 20:26:09.817 -03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-11-05 20:26:09.818 -03:00 [DBG] Policy authentication schemes  did not succeed
+2024-11-05 20:26:09.819 -03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (ADMIN)
+2024-11-05 20:26:09.820 -03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-11-05 20:26:09.821 -03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7011/api/users/16 - 401 0 null 12.4899ms
+2024-11-05 20:26:10.827 -03:00 [DBG] Connection id "0HN7TU3UCQNO1" received FIN.
+2024-11-05 20:26:10.828 -03:00 [DBG] Connection id "0HN7TU3UCQNO1" is closed. The last processed stream ID was 3.
+2024-11-05 20:26:10.828 -03:00 [DBG] The connection queue processing loop for 0HN7TU3UCQNO1 completed.
+2024-11-05 20:26:10.829 -03:00 [DBG] Connection id "0HN7TU3UCQNO1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:26:10.842 -03:00 [DBG] Connection id "0HN7TU3UCQNO1" stopped.
+2024-11-05 20:26:15.878 -03:00 [DBG] Connection id "0HN7TU3UCQNO2" accepted.
+2024-11-05 20:26:15.879 -03:00 [DBG] Connection id "0HN7TU3UCQNO2" started.
+2024-11-05 20:26:15.880 -03:00 [DBG] Connection 0HN7TU3UCQNO2 established using the following protocol: "Tls13"
+2024-11-05 20:26:15.882 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/api/users?role=admin - null null
+2024-11-05 20:26:15.883 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users'
+2024-11-05 20:26:15.884 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)' with route pattern 'api/users' is valid for the request path '/api/users'
+2024-11-05 20:26:15.885 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:26:15.886 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:26:15.887 -03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-11-05 20:26:15.888 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:26:15.890 -03:00 [INF] Route matched with {action = "ListUsers", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[AuthServer.Users.responses.UserResponse]] ListUsers(System.String) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:26:15.892 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:26:15.893 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:26:15.894 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:26:15.896 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:26:15.897 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:26:15.898 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:26:15.900 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:26:15.903 -03:00 [DBG] Attempting to bind parameter 'role' of type 'System.String' ...
+2024-11-05 20:26:15.904 -03:00 [DBG] Attempting to bind parameter 'role' of type 'System.String' using the name 'role' in request data ...
+2024-11-05 20:26:15.906 -03:00 [DBG] Done attempting to bind parameter 'role' of type 'System.String'.
+2024-11-05 20:26:15.907 -03:00 [DBG] Done attempting to bind parameter 'role' of type 'System.String'.
+2024-11-05 20:26:15.908 -03:00 [DBG] Attempting to validate the bound parameter 'role' of type 'System.String' ...
+2024-11-05 20:26:15.909 -03:00 [DBG] Done attempting to validate the bound parameter 'role' of type 'System.String'.
+2024-11-05 20:26:15.949 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:26:15.953 -03:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Include(u => u.Roles)
+    .Where(u => u.Roles
+        .Any(r => r.Name == __role_0))
+    .OrderBy(u => u.Name)
+    .Distinct()'
+2024-11-05 20:26:15.959 -03:00 [DBG] Including navigation: 'User.Roles'.
+2024-11-05 20:26:15.964 -03:00 [WRN] The query uses the 'Distinct' operator after applying an ordering. If there are any row limiting operation used before 'Distinct' and after ordering then ordering will be used for it. Ordering(s) will be erased after 'Distinct' and results afterwards would be unordered.
+2024-11-05 20:26:15.976 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<User>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.ID (long) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.Name (string) Required, 2], [Property: User.Password (string) Required, 3] }
+            1 -> 0
+            2 -> Dictionary<IProperty, int> { [Property: UserRole (Dictionary<string, object>).RoleId (no field, int) Indexer Required PK FK AfterSave:Throw, 4], [Property: UserRole (Dictionary<string, object>).UserId (no field, long) Indexer Required PK FK Index AfterSave:Throw, 5] }
+            3 -> Dictionary<IProperty, int> { [Property: Role.Long (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 6], [Property: Role.Name (string) Required Index, 7] }
+            4 -> 4
+            5 -> 5
+            6 -> 6
+        SELECT t.ID, t.Email, t.Name, t.Password, t0.RoleId, t0.UserId, t0.Long, t0.Name
+        FROM 
+        (
+            SELECT DISTINCT u.ID, u.Email, u.Name, u.Password
+            FROM Users AS u
+            WHERE EXISTS (
+                SELECT 1
+                FROM UserRole AS u0
+                INNER JOIN Roles AS r ON u0.RoleId == r.Long
+                WHERE ((u.ID != NULL) && (u.ID == u0.UserId)) && (r.Name == @__role_0))
+        ) AS t
+        LEFT JOIN 
+        (
+            SELECT u1.RoleId, u1.UserId, r0.Long, r0.Name
+            FROM UserRole AS u1
+            INNER JOIN Roles AS r0 ON u1.RoleId == r0.Long
+        ) AS t0 ON t.ID == t0.UserId
+        ORDER BY t.ID ASC, t0.RoleId ASC, t0.UserId ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, User>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)'
+2024-11-05 20:26:15.981 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:26:15.982 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:26:15.983 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:15.984 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:15.985 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:26:15.985 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:26:15.986 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:26:15.987 -03:00 [DBG] Executing DbCommand [Parameters=[@__role_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT DISTINCT [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE EXISTS (
+        SELECT 1
+        FROM [UserRole] AS [u0]
+        INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+        WHERE [u].[ID] = [u0].[UserId] AND [r].[Name] = @__role_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [u1].[RoleId], [u1].[UserId], [r0].[Long], [r0].[Name]
+    FROM [UserRole] AS [u1]
+    INNER JOIN [Roles] AS [r0] ON [u1].[RoleId] = [r0].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:26:15.994 -03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__role_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT DISTINCT [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE EXISTS (
+        SELECT 1
+        FROM [UserRole] AS [u0]
+        INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+        WHERE [u].[ID] = [u0].[UserId] AND [r].[Name] = @__role_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [u1].[RoleId], [u1].[UserId], [r0].[Long], [r0].[Name]
+    FROM [UserRole] AS [u1]
+    INNER JOIN [Roles] AS [r0] ON [u1].[RoleId] = [r0].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:26:15.996 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:26:15.997 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:26:15.998 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:26:15.999 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:16.000 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 4ms reading results.
+2024-11-05 20:26:16.001 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:16.002 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:26:16.003 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:26:16.006 -03:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-11-05 20:26:16.007 -03:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-11-05 20:26:16.008 -03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-11-05 20:26:16.009 -03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-11-05 20:26:16.010 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-11-05 20:26:16.011 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthServer.Users.responses.UserResponse, AuthServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-05 20:26:16.016 -03:00 [INF] Executed action AuthServer.Users.UsersController.ListUsers (AuthServer) in 118.0961ms
+2024-11-05 20:26:16.017 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:26:16.018 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:26:16.019 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:16.020 -03:00 [DBG] Disposed connection to database '' on server '' (0ms).
+2024-11-05 20:26:16.021 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/api/users?role=admin - 200 null application/json; charset=utf-8 139.113ms
+2024-11-05 20:26:20.828 -03:00 [DBG] Connection id "0HN7TU3UCQNO2" received FIN.
+2024-11-05 20:26:20.829 -03:00 [DBG] Connection id "0HN7TU3UCQNO2" is closed. The last processed stream ID was 1.
+2024-11-05 20:26:20.829 -03:00 [DBG] The connection queue processing loop for 0HN7TU3UCQNO2 completed.
+2024-11-05 20:26:20.830 -03:00 [DBG] Connection id "0HN7TU3UCQNO2" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:26:20.841 -03:00 [DBG] Connection id "0HN7TU3UCQNO2" stopped.
+2024-11-05 20:26:20.863 -03:00 [DBG] Connection id "0HN7TU3UCQNO3" accepted.
+2024-11-05 20:26:20.863 -03:00 [DBG] Connection id "0HN7TU3UCQNO3" started.
+2024-11-05 20:26:20.867 -03:00 [DBG] Connection 0HN7TU3UCQNO3 established using the following protocol: "Tls13"
+2024-11-05 20:26:20.869 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/api/users?role=user - null null
+2024-11-05 20:26:20.870 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users'
+2024-11-05 20:26:20.871 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)' with route pattern 'api/users' is valid for the request path '/api/users'
+2024-11-05 20:26:20.872 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:26:20.873 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:26:20.873 -03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-11-05 20:26:20.874 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:26:20.875 -03:00 [INF] Route matched with {action = "ListUsers", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[AuthServer.Users.responses.UserResponse]] ListUsers(System.String) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:26:20.877 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:26:20.878 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:26:20.879 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:26:20.880 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:26:20.881 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:26:20.882 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:26:20.884 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:26:20.885 -03:00 [DBG] Attempting to bind parameter 'role' of type 'System.String' ...
+2024-11-05 20:26:20.886 -03:00 [DBG] Attempting to bind parameter 'role' of type 'System.String' using the name 'role' in request data ...
+2024-11-05 20:26:20.887 -03:00 [DBG] Done attempting to bind parameter 'role' of type 'System.String'.
+2024-11-05 20:26:20.888 -03:00 [DBG] Done attempting to bind parameter 'role' of type 'System.String'.
+2024-11-05 20:26:20.889 -03:00 [DBG] Attempting to validate the bound parameter 'role' of type 'System.String' ...
+2024-11-05 20:26:20.890 -03:00 [DBG] Done attempting to validate the bound parameter 'role' of type 'System.String'.
+2024-11-05 20:26:20.891 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:26:20.895 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:26:20.895 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:26:20.896 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:20.897 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:20.898 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:26:20.899 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:26:20.900 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:26:20.901 -03:00 [DBG] Executing DbCommand [Parameters=[@__role_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT DISTINCT [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE EXISTS (
+        SELECT 1
+        FROM [UserRole] AS [u0]
+        INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+        WHERE [u].[ID] = [u0].[UserId] AND [r].[Name] = @__role_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [u1].[RoleId], [u1].[UserId], [r0].[Long], [r0].[Name]
+    FROM [UserRole] AS [u1]
+    INNER JOIN [Roles] AS [r0] ON [u1].[RoleId] = [r0].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:26:20.904 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__role_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT DISTINCT [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE EXISTS (
+        SELECT 1
+        FROM [UserRole] AS [u0]
+        INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+        WHERE [u].[ID] = [u0].[UserId] AND [r].[Name] = @__role_0)
+) AS [t]
+LEFT JOIN (
+    SELECT [u1].[RoleId], [u1].[UserId], [r0].[Long], [r0].[Name]
+    FROM [UserRole] AS [u1]
+    INNER JOIN [Roles] AS [r0] ON [u1].[RoleId] = [r0].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:26:20.905 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:26:20.906 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:26:20.907 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:26:20.908 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:20.909 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 3ms reading results.
+2024-11-05 20:26:20.910 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:20.911 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:26:20.912 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:26:20.914 -03:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-11-05 20:26:20.915 -03:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-11-05 20:26:20.916 -03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-11-05 20:26:20.916 -03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-11-05 20:26:20.917 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-11-05 20:26:20.918 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthServer.Users.responses.UserResponse, AuthServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-05 20:26:20.919 -03:00 [INF] Executed action AuthServer.Users.UsersController.ListUsers (AuthServer) in 36.5748ms
+2024-11-05 20:26:20.919 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:26:20.920 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:26:20.921 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:26:20.922 -03:00 [DBG] Disposed connection to database '' on server '' (0ms).
+2024-11-05 20:26:20.923 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/api/users?role=user - 200 null application/json; charset=utf-8 54.1903ms
+2024-11-05 20:26:30.831 -03:00 [DBG] Connection id "0HN7TU3UCQNO3" received FIN.
+2024-11-05 20:26:30.832 -03:00 [DBG] Connection id "0HN7TU3UCQNO3" is closed. The last processed stream ID was 1.
+2024-11-05 20:26:30.832 -03:00 [DBG] The connection queue processing loop for 0HN7TU3UCQNO3 completed.
+2024-11-05 20:26:30.834 -03:00 [DBG] Connection id "0HN7TU3UCQNO3" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:26:30.846 -03:00 [DBG] Connection id "0HN7TU3UCQNO3" stopped.
+2024-11-05 20:39:25.616 -03:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-11-05 20:39:25.674 -03:00 [DBG] Hosting starting
+2024-11-05 20:39:25.685 -03:00 [INF] User profile is available. Using 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-05 20:39:25.690 -03:00 [DBG] Reading data from file 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys\key-bf4636f6-ef08-4ac9-8613-5c8299c406a4.xml'.
+2024-11-05 20:39:25.696 -03:00 [DBG] Found key {bf4636f6-ef08-4ac9-8613-5c8299c406a4}.
+2024-11-05 20:39:25.702 -03:00 [DBG] Considering key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} with expiration date 2025-02-02 14:46:39Z as default key.
+2024-11-05 20:39:25.704 -03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-11-05 20:39:25.706 -03:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-11-05 20:39:25.707 -03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-11-05 20:39:25.710 -03:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-11-05 20:39:25.712 -03:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-11-05 20:39:25.713 -03:00 [DBG] Using key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} as the default key.
+2024-11-05 20:39:25.714 -03:00 [DBG] Key ring with default key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} was loaded during application startup.
+2024-11-05 20:39:25.774 -03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2024-11-05 20:39:26.042 -03:00 [DBG] The index {'RoleId'} was not created on entity type 'UserRole (Dictionary<string, object>)' as the properties are already covered by the index {'RoleId', 'UserId'}.
+2024-11-05 20:39:26.182 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:39:26.210 -03:00 [DBG] Compiling query expression: 
+'DbSet<Role>()
+    .Count()'
+2024-11-05 20:39:26.322 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<int>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> 0
+        SELECT COUNT(*)
+        FROM Roles AS r), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, int>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)
+    .Single()'
+2024-11-05 20:39:26.338 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:39:26.350 -03:00 [DBG] Created DbConnection. (10ms).
+2024-11-05 20:39:26.353 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.459 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.462 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:39:26.465 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2024-11-05 20:39:26.467 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (6ms).
+2024-11-05 20:39:26.472 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:39:26.490 -03:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:39:26.496 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.500 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 6ms reading results.
+2024-11-05 20:39:26.502 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.506 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (3ms).
+2024-11-05 20:39:26.511 -03:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Include(user => user.Roles)'
+2024-11-05 20:39:26.520 -03:00 [DBG] Including navigation: 'User.Roles'.
+2024-11-05 20:39:26.589 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<User>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.ID (long) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.Name (string) Required, 2], [Property: User.Password (string) Required, 3] }
+            1 -> 0
+            2 -> Dictionary<IProperty, int> { [Property: UserRole (Dictionary<string, object>).RoleId (no field, int) Indexer Required PK FK AfterSave:Throw, 4], [Property: UserRole (Dictionary<string, object>).UserId (no field, long) Indexer Required PK FK Index AfterSave:Throw, 5] }
+            3 -> Dictionary<IProperty, int> { [Property: Role.Long (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 6], [Property: Role.Name (string) Required Index, 7] }
+            4 -> 4
+            5 -> 5
+            6 -> 6
+        SELECT u.ID, u.Email, u.Name, u.Password, t.RoleId, t.UserId, t.Long, t.Name
+        FROM Users AS u
+        LEFT JOIN 
+        (
+            SELECT u0.RoleId, u0.UserId, r.Long, r.Name
+            FROM UserRole AS u0
+            INNER JOIN Roles AS r ON u0.RoleId == r.Long
+        ) AS t ON u.ID == t.UserId
+        ORDER BY u.ID ASC, t.RoleId ASC, t.UserId ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, User>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)'
+2024-11-05 20:39:26.594 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.595 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.596 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:39:26.597 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:39:26.597 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:39:26.598 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:39:26.603 -03:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:39:26.622 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:26.648 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:26.665 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:26.670 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:26.671 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:26.672 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:26.673 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.674 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 69ms reading results.
+2024-11-05 20:39:26.674 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.675 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:39:26.677 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:39:26.678 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:26.680 -03:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2024-11-05 20:39:26.767 -03:00 [INF] Now listening on: https://localhost:7011
+2024-11-05 20:39:26.768 -03:00 [INF] Now listening on: http://localhost:5091
+2024-11-05 20:39:26.769 -03:00 [DBG] Loaded hosting startup assembly AuthServer
+2024-11-05 20:39:26.769 -03:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-11-05 20:39:26.770 -03:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-11-05 20:39:26.770 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-05 20:39:26.771 -03:00 [INF] Hosting environment: Development
+2024-11-05 20:39:26.772 -03:00 [INF] Content root path: C:\Users\gusta\source\repos\AuthServer\AuthServer
+2024-11-05 20:39:26.772 -03:00 [DBG] Hosting started
+2024-11-05 20:39:26.799 -03:00 [DBG] Connection id "0HN7TUCB07IQG" received FIN.
+2024-11-05 20:39:26.799 -03:00 [DBG] Connection id "0HN7TUCB07IQG" accepted.
+2024-11-05 20:39:26.802 -03:00 [DBG] Connection id "0HN7TUCB07IQG" started.
+2024-11-05 20:39:26.808 -03:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-11-05 20:39:26.816 -03:00 [DBG] Connection id "0HN7TUCB07IQH" accepted.
+2024-11-05 20:39:26.817 -03:00 [DBG] Connection id "0HN7TUCB07IQH" started.
+2024-11-05 20:39:26.818 -03:00 [DBG] Connection id "0HN7TUCB07IQG" stopped.
+2024-11-05 20:39:26.819 -03:00 [DBG] Connection id "0HN7TUCB07IQG" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:39:26.834 -03:00 [DBG] Connection 0HN7TUCB07IQH established using the following protocol: "Tls13"
+2024-11-05 20:39:26.858 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.html - null null
+2024-11-05 20:39:26.900 -03:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-11-05 20:39:26.913 -03:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-11-05 20:39:26.914 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:39:26.956 -03:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-11-05 20:39:26.957 -03:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-11-05 20:39:26.961 -03:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-11-05 20:39:26.962 -03:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-11-05 20:39:26.965 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.html - 200 null text/html;charset=utf-8 107.6952ms
+2024-11-05 20:39:27.038 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.js - null null
+2024-11-05 20:39:27.038 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-05 20:39:27.040 -03:00 [DBG] No candidates found for the request path '/swagger/index.js'
+2024-11-05 20:39:27.042 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:39:27.043 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.js - 200 null application/javascript;charset=utf-8 5.1031ms
+2024-11-05 20:39:27.046 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 7.592ms
+2024-11-05 20:39:27.123 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_vs/browserLink - null null
+2024-11-05 20:39:27.141 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.348ms
+2024-11-05 20:39:27.195 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - null null
+2024-11-05 20:39:27.197 -03:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-11-05 20:39:27.198 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:39:27.270 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.4328ms
+2024-11-05 20:39:56.541 -03:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-11-05 20:39:56.596 -03:00 [DBG] Hosting starting
+2024-11-05 20:39:56.607 -03:00 [INF] User profile is available. Using 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-05 20:39:56.612 -03:00 [DBG] Reading data from file 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys\key-bf4636f6-ef08-4ac9-8613-5c8299c406a4.xml'.
+2024-11-05 20:39:56.617 -03:00 [DBG] Found key {bf4636f6-ef08-4ac9-8613-5c8299c406a4}.
+2024-11-05 20:39:56.623 -03:00 [DBG] Considering key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} with expiration date 2025-02-02 14:46:39Z as default key.
+2024-11-05 20:39:56.626 -03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-11-05 20:39:56.628 -03:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-11-05 20:39:56.630 -03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-11-05 20:39:56.635 -03:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-11-05 20:39:56.637 -03:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-11-05 20:39:56.638 -03:00 [DBG] Using key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} as the default key.
+2024-11-05 20:39:56.639 -03:00 [DBG] Key ring with default key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} was loaded during application startup.
+2024-11-05 20:39:56.695 -03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2024-11-05 20:39:56.939 -03:00 [DBG] The index {'RoleId'} was not created on entity type 'UserRole (Dictionary<string, object>)' as the properties are already covered by the index {'RoleId', 'UserId'}.
+2024-11-05 20:39:57.065 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:39:57.091 -03:00 [DBG] Compiling query expression: 
+'DbSet<Role>()
+    .Count()'
+2024-11-05 20:39:57.193 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<int>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> 0
+        SELECT COUNT(*)
+        FROM Roles AS r), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, int>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)
+    .Single()'
+2024-11-05 20:39:57.207 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:39:57.217 -03:00 [DBG] Created DbConnection. (9ms).
+2024-11-05 20:39:57.219 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.314 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.317 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:39:57.321 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2024-11-05 20:39:57.323 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (6ms).
+2024-11-05 20:39:57.327 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:39:57.343 -03:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:39:57.349 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.353 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 6ms reading results.
+2024-11-05 20:39:57.354 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.358 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (3ms).
+2024-11-05 20:39:57.363 -03:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Include(user => user.Roles)'
+2024-11-05 20:39:57.371 -03:00 [DBG] Including navigation: 'User.Roles'.
+2024-11-05 20:39:57.430 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<User>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.ID (long) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.Name (string) Required, 2], [Property: User.Password (string) Required, 3] }
+            1 -> 0
+            2 -> Dictionary<IProperty, int> { [Property: UserRole (Dictionary<string, object>).RoleId (no field, int) Indexer Required PK FK AfterSave:Throw, 4], [Property: UserRole (Dictionary<string, object>).UserId (no field, long) Indexer Required PK FK Index AfterSave:Throw, 5] }
+            3 -> Dictionary<IProperty, int> { [Property: Role.Long (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 6], [Property: Role.Name (string) Required Index, 7] }
+            4 -> 4
+            5 -> 5
+            6 -> 6
+        SELECT u.ID, u.Email, u.Name, u.Password, t.RoleId, t.UserId, t.Long, t.Name
+        FROM Users AS u
+        LEFT JOIN 
+        (
+            SELECT u0.RoleId, u0.UserId, r.Long, r.Name
+            FROM UserRole AS u0
+            INNER JOIN Roles AS r ON u0.RoleId == r.Long
+        ) AS t ON u.ID == t.UserId
+        ORDER BY u.ID ASC, t.RoleId ASC, t.UserId ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, User>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)'
+2024-11-05 20:39:57.435 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.436 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.437 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:39:57.438 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:39:57.438 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:39:57.439 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:39:57.443 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:39:57.460 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:57.479 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:57.489 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:57.491 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:57.492 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:57.493 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:39:57.494 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.495 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 50ms reading results.
+2024-11-05 20:39:57.496 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.496 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:39:57.498 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:39:57.500 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:39:57.501 -03:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2024-11-05 20:39:57.554 -03:00 [INF] Now listening on: https://localhost:7011
+2024-11-05 20:39:57.554 -03:00 [INF] Now listening on: http://localhost:5091
+2024-11-05 20:39:57.555 -03:00 [DBG] Loaded hosting startup assembly AuthServer
+2024-11-05 20:39:57.555 -03:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-11-05 20:39:57.556 -03:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-11-05 20:39:57.557 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-05 20:39:57.557 -03:00 [INF] Hosting environment: Development
+2024-11-05 20:39:57.558 -03:00 [INF] Content root path: C:\Users\gusta\source\repos\AuthServer\AuthServer
+2024-11-05 20:39:57.558 -03:00 [DBG] Hosting started
+2024-11-05 20:39:57.737 -03:00 [DBG] Connection id "0HN7TUCK78SVT" received FIN.
+2024-11-05 20:39:57.737 -03:00 [DBG] Connection id "0HN7TUCK78SVU" received FIN.
+2024-11-05 20:39:57.740 -03:00 [DBG] Connection id "0HN7TUCK78SVT" accepted.
+2024-11-05 20:39:57.740 -03:00 [DBG] Connection id "0HN7TUCK78SVU" accepted.
+2024-11-05 20:39:57.741 -03:00 [DBG] Connection id "0HN7TUCK78SVT" started.
+2024-11-05 20:39:57.742 -03:00 [DBG] Connection id "0HN7TUCK78SVU" started.
+2024-11-05 20:39:57.748 -03:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-11-05 20:39:57.748 -03:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-11-05 20:39:57.756 -03:00 [DBG] Connection id "0HN7TUCK78SVT" stopped.
+2024-11-05 20:39:57.756 -03:00 [DBG] Connection id "0HN7TUCK78SVU" stopped.
+2024-11-05 20:39:57.758 -03:00 [DBG] Connection id "0HN7TUCK78SVU" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:39:57.758 -03:00 [DBG] Connection id "0HN7TUCK78SVT" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:39:57.786 -03:00 [DBG] Connection id "0HN7TUCK78SVV" accepted.
+2024-11-05 20:39:57.788 -03:00 [DBG] Connection id "0HN7TUCK78SVV" started.
+2024-11-05 20:39:57.805 -03:00 [DBG] Connection 0HN7TUCK78SVV established using the following protocol: "Tls13"
+2024-11-05 20:39:57.826 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.html - null null
+2024-11-05 20:39:57.865 -03:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-11-05 20:39:57.878 -03:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-11-05 20:39:57.879 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:39:57.921 -03:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-11-05 20:39:57.922 -03:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-11-05 20:39:57.926 -03:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-11-05 20:39:57.927 -03:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-11-05 20:39:57.929 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.html - 200 null text/html;charset=utf-8 103.9583ms
+2024-11-05 20:39:57.941 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.js - null null
+2024-11-05 20:39:57.941 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_vs/browserLink - null null
+2024-11-05 20:39:57.941 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-05 20:39:57.943 -03:00 [DBG] No candidates found for the request path '/swagger/index.js'
+2024-11-05 20:39:57.948 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:39:57.951 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.js - 200 null application/javascript;charset=utf-8 9.7641ms
+2024-11-05 20:39:57.953 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 11.9508ms
+2024-11-05 20:39:57.968 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_vs/browserLink - 200 null text/javascript; charset=UTF-8 26.8927ms
+2024-11-05 20:39:58.022 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - null null
+2024-11-05 20:39:58.024 -03:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-11-05 20:39:58.025 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:39:58.099 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 76.7586ms
+2024-11-05 20:40:07.294 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.html - null null
+2024-11-05 20:40:07.298 -03:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-11-05 20:40:07.299 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:40:07.300 -03:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-11-05 20:40:07.300 -03:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-11-05 20:40:07.301 -03:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-11-05 20:40:07.302 -03:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-11-05 20:40:07.302 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.html - 200 null text/html;charset=utf-8 8.912ms
+2024-11-05 20:40:07.319 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.js - null null
+2024-11-05 20:40:07.320 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_vs/browserLink - null null
+2024-11-05 20:40:07.320 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-05 20:40:07.321 -03:00 [DBG] No candidates found for the request path '/swagger/index.js'
+2024-11-05 20:40:07.325 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 5.163ms
+2024-11-05 20:40:07.325 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:40:07.330 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.js - 200 null application/javascript;charset=utf-8 10.8022ms
+2024-11-05 20:40:07.332 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_vs/browserLink - 200 null text/javascript; charset=UTF-8 12.1636ms
+2024-11-05 20:40:07.400 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - null null
+2024-11-05 20:40:07.402 -03:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-11-05 20:40:07.403 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:40:07.410 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 9.3756ms
+2024-11-05 20:40:17.988 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7011/api/users/login - application/json 60
+2024-11-05 20:40:17.994 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users/login'
+2024-11-05 20:40:17.995 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.Login (AuthServer)' with route pattern 'api/users/login' is valid for the request path '/api/users/login'
+2024-11-05 20:40:17.997 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:40:17.999 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:40:18.000 -03:00 [DBG] The request has an origin header: 'https://localhost:7011'.
+2024-11-05 20:40:18.001 -03:00 [INF] CORS policy execution successful.
+2024-11-05 20:40:18.028 -03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-11-05 20:40:18.031 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:40:18.042 -03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AuthServer.Users.LoginRequest) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:40:18.044 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:40:18.045 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:40:18.046 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:40:18.047 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:40:18.048 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:40:18.050 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:40:18.052 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:40:18.056 -03:00 [DBG] Attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest' ...
+2024-11-05 20:40:18.058 -03:00 [DBG] Attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest' using the name '' in request data ...
+2024-11-05 20:40:18.059 -03:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-11-05 20:40:18.066 -03:00 [DBG] Connection id "0HN7TUCK78SVV", Request id "0HN7TUCK78SVV:00000015": started reading request body.
+2024-11-05 20:40:18.067 -03:00 [DBG] Connection id "0HN7TUCK78SVV", Request id "0HN7TUCK78SVV:00000015": done reading request body.
+2024-11-05 20:40:18.071 -03:00 [DBG] JSON input formatter succeeded, deserializing to type 'AuthServer.Users.LoginRequest'
+2024-11-05 20:40:18.071 -03:00 [DBG] Done attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:40:18.072 -03:00 [DBG] Done attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:40:18.073 -03:00 [DBG] Attempting to validate the bound parameter 'credentials' of type 'AuthServer.Users.LoginRequest' ...
+2024-11-05 20:40:18.078 -03:00 [DBG] Done attempting to validate the bound parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:40:18.089 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:40:18.093 -03:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Include(u => u.Roles)
+    .FirstOrDefault(u => u.Email == __email_0)'
+2024-11-05 20:40:18.096 -03:00 [DBG] Including navigation: 'User.Roles'.
+2024-11-05 20:40:18.106 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<User>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.ID (long) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.Name (string) Required, 2], [Property: User.Password (string) Required, 3] }
+            1 -> 0
+            2 -> Dictionary<IProperty, int> { [Property: UserRole (Dictionary<string, object>).RoleId (no field, int) Indexer Required PK FK AfterSave:Throw, 4], [Property: UserRole (Dictionary<string, object>).UserId (no field, long) Indexer Required PK FK Index AfterSave:Throw, 5] }
+            3 -> Dictionary<IProperty, int> { [Property: Role.Long (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 6], [Property: Role.Name (string) Required Index, 7] }
+            4 -> 4
+            5 -> 5
+            6 -> 6
+        SELECT t.ID, t.Email, t.Name, t.Password, t0.RoleId, t0.UserId, t0.Long, t0.Name
+        FROM 
+        (
+            SELECT TOP(1) u.ID, u.Email, u.Name, u.Password
+            FROM Users AS u
+            WHERE u.Email == @__email_0
+        ) AS t
+        LEFT JOIN 
+        (
+            SELECT u0.RoleId, u0.UserId, r.Long, r.Name
+            FROM UserRole AS u0
+            INNER JOIN Roles AS r ON u0.RoleId == r.Long
+        ) AS t0 ON t.ID == t0.UserId
+        ORDER BY t.ID ASC, t0.RoleId ASC, t0.UserId ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, User>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)
+    .SingleOrDefault()'
+2024-11-05 20:40:18.109 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:40:18.110 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:40:18.111 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:18.112 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:18.113 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:40:18.113 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:40:18.116 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (3ms).
+2024-11-05 20:40:18.118 -03:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:40:18.129 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:40:18.131 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:40:18.132 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:40:18.133 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:40:18.134 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:18.136 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 4ms reading results.
+2024-11-05 20:40:18.137 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:18.138 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:40:18.139 -03:00 [INF] User logged in. id=16 name=Auth Server Administrator
+2024-11-05 20:40:18.191 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:40:18.194 -03:00 [DBG] No information found on request to perform content negotiation.
+2024-11-05 20:40:18.194 -03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-11-05 20:40:18.195 -03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-11-05 20:40:18.196 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-11-05 20:40:18.197 -03:00 [INF] Executing OkObjectResult, writing value of type 'LoginResponse'.
+2024-11-05 20:40:18.206 -03:00 [INF] Executed action AuthServer.Users.UsersController.Login (AuthServer) in 155.1288ms
+2024-11-05 20:40:18.207 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:40:18.208 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:40:18.210 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:18.212 -03:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2024-11-05 20:40:18.213 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7011/api/users/login - 200 null application/json; charset=utf-8 224.9864ms
+2024-11-05 20:40:49.574 -03:00 [DBG] Connection id "0HN7TUCK78T00" accepted.
+2024-11-05 20:40:49.575 -03:00 [DBG] Connection id "0HN7TUCK78T00" started.
+2024-11-05 20:40:49.576 -03:00 [DBG] Connection id "0HN7TUCK78T01" accepted.
+2024-11-05 20:40:49.576 -03:00 [DBG] Connection id "0HN7TUCK78T00" received FIN.
+2024-11-05 20:40:49.577 -03:00 [DBG] Connection id "0HN7TUCK78T01" started.
+2024-11-05 20:40:49.579 -03:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-11-05 20:40:49.581 -03:00 [DBG] Connection id "0HN7TUCK78T00" stopped.
+2024-11-05 20:40:49.581 -03:00 [DBG] Connection id "0HN7TUCK78T00" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:40:49.585 -03:00 [DBG] Connection 0HN7TUCK78T01 established using the following protocol: "Tls13"
+2024-11-05 20:40:49.589 -03:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:7011/api/users/login - application/json 67
+2024-11-05 20:40:49.591 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users/login'
+2024-11-05 20:40:49.592 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)' with route pattern 'api/users/{id}' is valid for the request path '/api/users/login'
+2024-11-05 20:40:49.593 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)'
+2024-11-05 20:40:49.593 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:40:49.632 -03:00 [DBG] Successfully validated the token.
+2024-11-05 20:40:49.633 -03:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2024-11-05 20:40:49.637 -03:00 [DBG] Authorization was successful.
+2024-11-05 20:40:49.637 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)'
+2024-11-05 20:40:49.640 -03:00 [INF] Route matched with {action = "Delete", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Delete(Int64) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:40:49.641 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:40:49.642 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:40:49.643 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:40:49.644 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:40:49.645 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:40:49.646 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:40:49.648 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:40:49.649 -03:00 [DBG] Attempting to bind parameter 'id' of type 'System.Int64' ...
+2024-11-05 20:40:49.650 -03:00 [DBG] Attempting to bind parameter 'id' of type 'System.Int64' using the name 'id' in request data ...
+2024-11-05 20:40:49.656 -03:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Int64'.
+2024-11-05 20:40:49.656 -03:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Int64'.
+2024-11-05 20:40:49.657 -03:00 [DBG] Attempting to validate the bound parameter 'id' of type 'System.Int64' ...
+2024-11-05 20:40:49.658 -03:00 [DBG] Done attempting to validate the bound parameter 'id' of type 'System.Int64'.
+2024-11-05 20:40:49.659 -03:00 [DBG] The request has model state errors, returning an error response.
+2024-11-05 20:40:49.661 -03:00 [DBG] Request was short circuited at action filter 'Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter'.
+2024-11-05 20:40:49.662 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:40:49.663 -03:00 [DBG] No information found on request to perform content negotiation.
+2024-11-05 20:40:49.664 -03:00 [DBG] Attempting to select the first output formatter in the output formatters list which supports a content type from the explicitly specified content types '["application/problem+json","application/problem+xml","application/problem+json","application/problem+xml"]'.
+2024-11-05 20:40:49.666 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/problem+json' to write the response.
+2024-11-05 20:40:49.667 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-11-05 20:40:49.680 -03:00 [INF] Executed action AuthServer.Users.UsersController.Delete (AuthServer) in 33.9621ms
+2024-11-05 20:40:49.681 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)'
+2024-11-05 20:40:49.682 -03:00 [DBG] Connection id "0HN7TUCK78T01" completed keep alive response.
+2024-11-05 20:40:49.683 -03:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:7011/api/users/login - 400 null application/problem+json; charset=utf-8 94.3382ms
+2024-11-05 20:40:49.685 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000001": started reading request body.
+2024-11-05 20:40:49.686 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000001": done reading request body.
+2024-11-05 20:40:58.159 -03:00 [INF] Request starting HTTP/1.1 POST https://localhost:7011/api/users/login - application/json 67
+2024-11-05 20:40:58.161 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users/login'
+2024-11-05 20:40:58.162 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.Login (AuthServer)' with route pattern 'api/users/login' is valid for the request path '/api/users/login'
+2024-11-05 20:40:58.163 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:40:58.164 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:40:58.166 -03:00 [DBG] Successfully validated the token.
+2024-11-05 20:40:58.167 -03:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2024-11-05 20:40:58.168 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:40:58.169 -03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AuthServer.Users.LoginRequest) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:40:58.170 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:40:58.171 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:40:58.172 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:40:58.173 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:40:58.174 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:40:58.175 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:40:58.177 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:40:58.178 -03:00 [DBG] Attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest' ...
+2024-11-05 20:40:58.179 -03:00 [DBG] Attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest' using the name '' in request data ...
+2024-11-05 20:40:58.180 -03:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-11-05 20:40:58.182 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000002": started reading request body.
+2024-11-05 20:40:58.183 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000002": done reading request body.
+2024-11-05 20:40:58.184 -03:00 [DBG] JSON input formatter succeeded, deserializing to type 'AuthServer.Users.LoginRequest'
+2024-11-05 20:40:58.185 -03:00 [DBG] Done attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:40:58.185 -03:00 [DBG] Done attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:40:58.186 -03:00 [DBG] Attempting to validate the bound parameter 'credentials' of type 'AuthServer.Users.LoginRequest' ...
+2024-11-05 20:40:58.187 -03:00 [DBG] Done attempting to validate the bound parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:40:58.223 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:40:58.227 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:40:58.228 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:40:58.229 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:58.230 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:58.231 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:40:58.232 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:40:58.233 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:40:58.234 -03:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:40:58.237 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:40:58.238 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:40:58.239 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:40:58.240 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:40:58.241 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:58.242 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 3ms reading results.
+2024-11-05 20:40:58.243 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:58.244 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:40:58.245 -03:00 [INF] User logged in. id=16 name=Auth Server Administrator
+2024-11-05 20:40:58.247 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:40:58.248 -03:00 [DBG] No information found on request to perform content negotiation.
+2024-11-05 20:40:58.249 -03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-11-05 20:40:58.249 -03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-11-05 20:40:58.250 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-11-05 20:40:58.250 -03:00 [INF] Executing OkObjectResult, writing value of type 'LoginResponse'.
+2024-11-05 20:40:58.251 -03:00 [INF] Executed action AuthServer.Users.UsersController.Login (AuthServer) in 76.1781ms
+2024-11-05 20:40:58.252 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:40:58.253 -03:00 [DBG] Connection id "0HN7TUCK78T01" completed keep alive response.
+2024-11-05 20:40:58.254 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:40:58.254 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:40:58.255 -03:00 [DBG] Disposed connection to database '' on server '' (0ms).
+2024-11-05 20:40:58.256 -03:00 [INF] Request finished HTTP/1.1 POST https://localhost:7011/api/users/login - 200 null application/json; charset=utf-8 96.842ms
+2024-11-05 20:41:25.400 -03:00 [INF] Request starting HTTP/1.1 POST https://localhost:7011/api/users/login - application/json 67
+2024-11-05 20:41:25.403 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users/login'
+2024-11-05 20:41:25.403 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.Login (AuthServer)' with route pattern 'api/users/login' is valid for the request path '/api/users/login'
+2024-11-05 20:41:25.404 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:41:25.405 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:41:25.406 -03:00 [DBG] Successfully validated the token.
+2024-11-05 20:41:25.407 -03:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2024-11-05 20:41:25.408 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:41:25.408 -03:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AuthServer.Users.LoginRequest) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:41:25.410 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:41:25.411 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:41:25.413 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:41:25.414 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:41:25.415 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:41:25.416 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:41:25.417 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:41:25.417 -03:00 [DBG] Attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest' ...
+2024-11-05 20:41:25.418 -03:00 [DBG] Attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest' using the name '' in request data ...
+2024-11-05 20:41:25.419 -03:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-11-05 20:41:25.420 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000003": started reading request body.
+2024-11-05 20:41:25.421 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000003": done reading request body.
+2024-11-05 20:41:25.422 -03:00 [DBG] JSON input formatter succeeded, deserializing to type 'AuthServer.Users.LoginRequest'
+2024-11-05 20:41:25.422 -03:00 [DBG] Done attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:41:25.423 -03:00 [DBG] Done attempting to bind parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:41:25.424 -03:00 [DBG] Attempting to validate the bound parameter 'credentials' of type 'AuthServer.Users.LoginRequest' ...
+2024-11-05 20:41:25.425 -03:00 [DBG] Done attempting to validate the bound parameter 'credentials' of type 'AuthServer.Users.LoginRequest'.
+2024-11-05 20:41:25.427 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:41:25.429 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:41:25.429 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:41:25.430 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:25.431 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:25.431 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:41:25.432 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:41:25.433 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:41:25.434 -03:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:41:25.436 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[Email] = @__email_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:41:25.438 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:25.439 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:25.440 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:25.441 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:25.442 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 4ms reading results.
+2024-11-05 20:41:25.443 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:25.444 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:41:25.445 -03:00 [INF] User logged in. id=16 name=Auth Server Administrator
+2024-11-05 20:41:25.446 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:41:25.448 -03:00 [DBG] No information found on request to perform content negotiation.
+2024-11-05 20:41:25.448 -03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-11-05 20:41:25.449 -03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-11-05 20:41:25.449 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-11-05 20:41:25.450 -03:00 [INF] Executing OkObjectResult, writing value of type 'LoginResponse'.
+2024-11-05 20:41:25.451 -03:00 [INF] Executed action AuthServer.Users.UsersController.Login (AuthServer) in 35.4354ms
+2024-11-05 20:41:25.452 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.Login (AuthServer)'
+2024-11-05 20:41:25.452 -03:00 [DBG] Connection id "0HN7TUCK78T01" completed keep alive response.
+2024-11-05 20:41:25.453 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:41:25.454 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:25.455 -03:00 [DBG] Disposed connection to database '' on server '' (0ms).
+2024-11-05 20:41:25.456 -03:00 [INF] Request finished HTTP/1.1 POST https://localhost:7011/api/users/login - 200 null application/json; charset=utf-8 55.5769ms
+2024-11-05 20:41:31.671 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7011/api/users - application/json 67
+2024-11-05 20:41:31.673 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users'
+2024-11-05 20:41:31.674 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)' with route pattern 'api/users' is valid for the request path '/api/users'
+2024-11-05 20:41:31.675 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:41:31.676 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:41:31.677 -03:00 [DBG] Successfully validated the token.
+2024-11-05 20:41:31.678 -03:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2024-11-05 20:41:31.678 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:41:31.681 -03:00 [INF] Route matched with {action = "ListUsers", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[AuthServer.Users.responses.UserResponse]] ListUsers(System.String) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:41:31.682 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:41:31.683 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:41:31.684 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:41:31.685 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:41:31.686 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:41:31.687 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:41:31.688 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:41:31.689 -03:00 [DBG] Attempting to bind parameter 'role' of type 'System.String' ...
+2024-11-05 20:41:31.690 -03:00 [DBG] Attempting to bind parameter 'role' of type 'System.String' using the name '' in request data ...
+2024-11-05 20:41:31.692 -03:00 [DBG] Could not find a value in the request with name '' for binding parameter 'role' of type 'System.String'.
+2024-11-05 20:41:31.693 -03:00 [DBG] Done attempting to bind parameter 'role' of type 'System.String'.
+2024-11-05 20:41:31.694 -03:00 [DBG] Done attempting to bind parameter 'role' of type 'System.String'.
+2024-11-05 20:41:31.695 -03:00 [DBG] Attempting to validate the bound parameter 'role' of type 'System.String' ...
+2024-11-05 20:41:31.696 -03:00 [DBG] Done attempting to validate the bound parameter 'role' of type 'System.String'.
+2024-11-05 20:41:31.698 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:41:31.699 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:41:31.700 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:41:31.701 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:31.701 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:31.702 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:41:31.703 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:41:31.704 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:41:31.705 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:41:31.708 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:41:31.710 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:31.711 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:31.711 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:31.712 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:31.713 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:31.714 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:31.715 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:31.716 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 6ms reading results.
+2024-11-05 20:41:31.717 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:31.718 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:41:31.720 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:41:31.721 -03:00 [DBG] No information found on request to perform content negotiation.
+2024-11-05 20:41:31.722 -03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-11-05 20:41:31.722 -03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-11-05 20:41:31.723 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-11-05 20:41:31.723 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthServer.Users.responses.UserResponse, AuthServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-05 20:41:31.725 -03:00 [INF] Executed action AuthServer.Users.UsersController.ListUsers (AuthServer) in 37.5389ms
+2024-11-05 20:41:31.726 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:41:31.726 -03:00 [DBG] Connection id "0HN7TUCK78T01" completed keep alive response.
+2024-11-05 20:41:31.727 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:41:31.728 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:31.729 -03:00 [DBG] Disposed connection to database '' on server '' (0ms).
+2024-11-05 20:41:31.730 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7011/api/users - 200 null application/json; charset=utf-8 59.2561ms
+2024-11-05 20:41:31.732 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000004": started reading request body.
+2024-11-05 20:41:31.733 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000004": done reading request body.
+2024-11-05 20:41:39.479 -03:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:7011/api/users/28 - application/json 67
+2024-11-05 20:41:39.480 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users/28'
+2024-11-05 20:41:39.481 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)' with route pattern 'api/users/{id}' is valid for the request path '/api/users/28'
+2024-11-05 20:41:39.482 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)'
+2024-11-05 20:41:39.483 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:41:39.484 -03:00 [DBG] Successfully validated the token.
+2024-11-05 20:41:39.485 -03:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2024-11-05 20:41:39.487 -03:00 [DBG] Authorization was successful.
+2024-11-05 20:41:39.487 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)'
+2024-11-05 20:41:39.488 -03:00 [INF] Route matched with {action = "Delete", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Delete(Int64) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:41:39.489 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:41:39.490 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:41:39.491 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:41:39.493 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:41:39.494 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:41:39.495 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:41:39.496 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:41:39.497 -03:00 [DBG] Attempting to bind parameter 'id' of type 'System.Int64' ...
+2024-11-05 20:41:39.498 -03:00 [DBG] Attempting to bind parameter 'id' of type 'System.Int64' using the name 'id' in request data ...
+2024-11-05 20:41:39.499 -03:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Int64'.
+2024-11-05 20:41:39.499 -03:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Int64'.
+2024-11-05 20:41:39.500 -03:00 [DBG] Attempting to validate the bound parameter 'id' of type 'System.Int64' ...
+2024-11-05 20:41:39.501 -03:00 [DBG] Done attempting to validate the bound parameter 'id' of type 'System.Int64'.
+2024-11-05 20:41:39.503 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:41:39.505 -03:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Include(u => u.Roles)
+    .FirstOrDefault(u => u.ID == __id_0)'
+2024-11-05 20:41:39.506 -03:00 [DBG] Including navigation: 'User.Roles'.
+2024-11-05 20:41:39.516 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<User>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.ID (long) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.Name (string) Required, 2], [Property: User.Password (string) Required, 3] }
+            1 -> 0
+            2 -> Dictionary<IProperty, int> { [Property: UserRole (Dictionary<string, object>).RoleId (no field, int) Indexer Required PK FK AfterSave:Throw, 4], [Property: UserRole (Dictionary<string, object>).UserId (no field, long) Indexer Required PK FK Index AfterSave:Throw, 5] }
+            3 -> Dictionary<IProperty, int> { [Property: Role.Long (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 6], [Property: Role.Name (string) Required Index, 7] }
+            4 -> 4
+            5 -> 5
+            6 -> 6
+        SELECT t.ID, t.Email, t.Name, t.Password, t0.RoleId, t0.UserId, t0.Long, t0.Name
+        FROM 
+        (
+            SELECT TOP(1) u.ID, u.Email, u.Name, u.Password
+            FROM Users AS u
+            WHERE u.ID == @__id_0
+        ) AS t
+        LEFT JOIN 
+        (
+            SELECT u0.RoleId, u0.UserId, r.Long, r.Name
+            FROM UserRole AS u0
+            INNER JOIN Roles AS r ON u0.RoleId == r.Long
+        ) AS t0 ON t.ID == t0.UserId
+        ORDER BY t.ID ASC, t0.RoleId ASC, t0.UserId ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, User>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)
+    .SingleOrDefault()'
+2024-11-05 20:41:39.518 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:41:39.518 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:41:39.519 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.520 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.520 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:41:39.521 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:41:39.522 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:41:39.523 -03:00 [DBG] Executing DbCommand [Parameters=[@__id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[ID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:41:39.530 -03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[ID], [t].[Email], [t].[Name], [t].[Password], [t0].[RoleId], [t0].[UserId], [t0].[Long], [t0].[Name]
+FROM (
+    SELECT TOP(1) [u].[ID], [u].[Email], [u].[Name], [u].[Password]
+    FROM [Users] AS [u]
+    WHERE [u].[ID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t0] ON [t].[ID] = [t0].[UserId]
+ORDER BY [t].[ID], [t0].[RoleId], [t0].[UserId]
+2024-11-05 20:41:39.531 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:39.532 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:39.533 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:39.534 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.535 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 3ms reading results.
+2024-11-05 20:41:39.536 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.537 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:41:39.545 -03:00 [DBG] An entity of type 'User' tracked by 'AuthServerContext' changed state from '"Unchanged"' to '"Deleted"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:39.558 -03:00 [DBG] A cascade state change of an entity of type 'UserRole' to '"Deleted"' occurred due to deletion of its parent entity of type 'User'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:39.560 -03:00 [DBG] An entity of type 'UserRole' tracked by 'AuthServerContext' changed state from '"Unchanged"' to '"Deleted"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:39.562 -03:00 [DBG] SaveChanges starting for 'AuthServerContext'.
+2024-11-05 20:41:39.564 -03:00 [DBG] DetectChanges starting for 'AuthServerContext'.
+2024-11-05 20:41:39.567 -03:00 [DBG] DetectChanges completed for 'AuthServerContext'.
+2024-11-05 20:41:39.609 -03:00 [DBG] Executing 2 update commands as a batch.
+2024-11-05 20:41:39.611 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.612 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.614 -03:00 [DBG] Beginning transaction with isolation level 'Unspecified'.
+2024-11-05 20:41:39.624 -03:00 [DBG] Began transaction with isolation level 'ReadCommitted'.
+2024-11-05 20:41:39.626 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:41:39.626 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:41:39.628 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (2ms).
+2024-11-05 20:41:39.629 -03:00 [DBG] Executing DbCommand [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int64), @p2='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [UserRole]
+OUTPUT 1
+WHERE [RoleId] = @p0 AND [UserId] = @p1;
+DELETE FROM [Users]
+OUTPUT 1
+WHERE [ID] = @p2;
+2024-11-05 20:41:39.686 -03:00 [INF] Executed DbCommand (57ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int64), @p2='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [UserRole]
+OUTPUT 1
+WHERE [RoleId] = @p0 AND [UserId] = @p1;
+DELETE FROM [Users]
+OUTPUT 1
+WHERE [ID] = @p2;
+2024-11-05 20:41:39.689 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.690 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 2ms reading results.
+2024-11-05 20:41:39.692 -03:00 [DBG] Committing transaction.
+2024-11-05 20:41:39.698 -03:00 [DBG] Committed transaction.
+2024-11-05 20:41:39.698 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.699 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:41:39.701 -03:00 [DBG] Disposing transaction.
+2024-11-05 20:41:39.704 -03:00 [DBG] An entity of type 'User' tracked by 'AuthServerContext' changed state from '"Deleted"' to '"Detached"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:39.706 -03:00 [DBG] An entity of type 'UserRole' tracked by 'AuthServerContext' changed state from '"Deleted"' to '"Detached"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:39.708 -03:00 [DBG] SaveChanges completed for 'AuthServerContext' with 2 entities written to the database.
+2024-11-05 20:41:39.709 -03:00 [WRN] User deleted. id=28 name=gustavo
+2024-11-05 20:41:39.711 -03:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2024-11-05 20:41:39.713 -03:00 [INF] Executed action AuthServer.Users.UsersController.Delete (AuthServer) in 217.7671ms
+2024-11-05 20:41:39.713 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.Delete (AuthServer)'
+2024-11-05 20:41:39.714 -03:00 [DBG] Connection id "0HN7TUCK78T01" completed keep alive response.
+2024-11-05 20:41:39.715 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:41:39.715 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:39.716 -03:00 [DBG] Disposed connection to database '' on server '' (0ms).
+2024-11-05 20:41:39.717 -03:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:7011/api/users/28 - 200 0 null 238.7782ms
+2024-11-05 20:41:39.719 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000005": started reading request body.
+2024-11-05 20:41:39.720 -03:00 [DBG] Connection id "0HN7TUCK78T01", Request id "0HN7TUCK78T01:00000005": done reading request body.
+2024-11-05 20:41:53.750 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/api/users - null null
+2024-11-05 20:41:53.752 -03:00 [DBG] 1 candidate(s) found for the request path '/api/users'
+2024-11-05 20:41:53.752 -03:00 [DBG] Endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)' with route pattern 'api/users' is valid for the request path '/api/users'
+2024-11-05 20:41:53.754 -03:00 [DBG] Request matched endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:41:53.754 -03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-11-05 20:41:53.755 -03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-11-05 20:41:53.756 -03:00 [INF] Executing endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:41:53.757 -03:00 [INF] Route matched with {action = "ListUsers", controller = "Users"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[AuthServer.Users.responses.UserResponse]] ListUsers(System.String) on controller AuthServer.Users.UsersController (AuthServer).
+2024-11-05 20:41:53.758 -03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-11-05 20:41:53.759 -03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-11-05 20:41:53.760 -03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-11-05 20:41:53.761 -03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-11-05 20:41:53.762 -03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-11-05 20:41:53.763 -03:00 [DBG] Executing controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:41:53.764 -03:00 [DBG] Executed controller factory for controller AuthServer.Users.UsersController (AuthServer)
+2024-11-05 20:41:53.765 -03:00 [DBG] Attempting to bind parameter 'role' of type 'System.String' ...
+2024-11-05 20:41:53.766 -03:00 [DBG] Attempting to bind parameter 'role' of type 'System.String' using the name '' in request data ...
+2024-11-05 20:41:53.767 -03:00 [DBG] Could not find a value in the request with name '' for binding parameter 'role' of type 'System.String'.
+2024-11-05 20:41:53.768 -03:00 [DBG] Done attempting to bind parameter 'role' of type 'System.String'.
+2024-11-05 20:41:53.769 -03:00 [DBG] Done attempting to bind parameter 'role' of type 'System.String'.
+2024-11-05 20:41:53.770 -03:00 [DBG] Attempting to validate the bound parameter 'role' of type 'System.String' ...
+2024-11-05 20:41:53.770 -03:00 [DBG] Done attempting to validate the bound parameter 'role' of type 'System.String'.
+2024-11-05 20:41:53.772 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:41:53.774 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:41:53.774 -03:00 [DBG] Created DbConnection. (0ms).
+2024-11-05 20:41:53.775 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:53.776 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:53.777 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:41:53.777 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:41:53.778 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:41:53.779 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:41:53.782 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:41:53.783 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:53.784 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:53.785 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:41:53.786 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:53.787 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 3ms reading results.
+2024-11-05 20:41:53.788 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:53.789 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:41:53.790 -03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-11-05 20:41:53.793 -03:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-11-05 20:41:53.794 -03:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-11-05 20:41:53.795 -03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-11-05 20:41:53.796 -03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-11-05 20:41:53.796 -03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-11-05 20:41:53.797 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthServer.Users.responses.UserResponse, AuthServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-05 20:41:53.798 -03:00 [INF] Executed action AuthServer.Users.UsersController.ListUsers (AuthServer) in 35.1019ms
+2024-11-05 20:41:53.799 -03:00 [INF] Executed endpoint 'AuthServer.Users.UsersController.ListUsers (AuthServer)'
+2024-11-05 20:41:53.800 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:41:53.800 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:41:53.802 -03:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2024-11-05 20:41:53.803 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/api/users - 200 null application/json; charset=utf-8 53.131ms
+2024-11-05 20:43:51.321 -03:00 [DBG] Connection id "0HN7TUCK78T01" disconnecting.
+2024-11-05 20:43:51.323 -03:00 [DBG] Connection id "0HN7TUCK78T01" stopped.
+2024-11-05 20:43:51.324 -03:00 [DBG] Connection id "0HN7TUCK78T01" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:44:06.410 -03:00 [DBG] Connection id "0HN7TUCK78SVV" is closing.
+2024-11-05 20:44:06.411 -03:00 [DBG] Connection id "0HN7TUCK78SVV" is closed. The last processed stream ID was 23.
+2024-11-05 20:44:06.412 -03:00 [DBG] Connection id "0HN7TUCK78SVV" received FIN.
+2024-11-05 20:44:06.413 -03:00 [DBG] Connection id "0HN7TUCK78SVV" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:44:06.414 -03:00 [DBG] The connection queue processing loop for 0HN7TUCK78SVV completed.
+2024-11-05 20:44:06.415 -03:00 [DBG] Connection id "0HN7TUCK78SVV" stopped.
+2024-11-05 20:46:26.520 -03:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-11-05 20:46:26.575 -03:00 [DBG] Hosting starting
+2024-11-05 20:46:26.585 -03:00 [INF] User profile is available. Using 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-05 20:46:26.590 -03:00 [DBG] Reading data from file 'C:\Users\gusta\AppData\Local\ASP.NET\DataProtection-Keys\key-bf4636f6-ef08-4ac9-8613-5c8299c406a4.xml'.
+2024-11-05 20:46:26.595 -03:00 [DBG] Found key {bf4636f6-ef08-4ac9-8613-5c8299c406a4}.
+2024-11-05 20:46:26.600 -03:00 [DBG] Considering key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} with expiration date 2025-02-02 14:46:39Z as default key.
+2024-11-05 20:46:26.603 -03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-11-05 20:46:26.605 -03:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-11-05 20:46:26.606 -03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-11-05 20:46:26.609 -03:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-11-05 20:46:26.610 -03:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-11-05 20:46:26.611 -03:00 [DBG] Using key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} as the default key.
+2024-11-05 20:46:26.612 -03:00 [DBG] Key ring with default key {bf4636f6-ef08-4ac9-8613-5c8299c406a4} was loaded during application startup.
+2024-11-05 20:46:26.662 -03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2024-11-05 20:46:26.901 -03:00 [DBG] The index {'RoleId'} was not created on entity type 'UserRole (Dictionary<string, object>)' as the properties are already covered by the index {'RoleId', 'UserId'}.
+2024-11-05 20:46:27.030 -03:00 [DBG] Entity Framework Core 8.0.10 initialized 'AuthServerContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.10' with options: None
+2024-11-05 20:46:27.055 -03:00 [DBG] Compiling query expression: 
+'DbSet<Role>()
+    .Count()'
+2024-11-05 20:46:27.190 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<int>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> 0
+        SELECT COUNT(*)
+        FROM Roles AS r), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, int>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)
+    .Single()'
+2024-11-05 20:46:27.206 -03:00 [DBG] Creating DbConnection.
+2024-11-05 20:46:27.219 -03:00 [DBG] Created DbConnection. (11ms).
+2024-11-05 20:46:27.221 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.327 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.330 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:46:27.334 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2024-11-05 20:46:27.336 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (6ms).
+2024-11-05 20:46:27.340 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:46:27.357 -03:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Roles] AS [r]
+2024-11-05 20:46:27.363 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.367 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 6ms reading results.
+2024-11-05 20:46:27.368 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.372 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (3ms).
+2024-11-05 20:46:27.376 -03:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Include(user => user.Roles)'
+2024-11-05 20:46:27.385 -03:00 [DBG] Including navigation: 'User.Roles'.
+2024-11-05 20:46:27.444 -03:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<User>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.ID (long) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.Name (string) Required, 2], [Property: User.Password (string) Required, 3] }
+            1 -> 0
+            2 -> Dictionary<IProperty, int> { [Property: UserRole (Dictionary<string, object>).RoleId (no field, int) Indexer Required PK FK AfterSave:Throw, 4], [Property: UserRole (Dictionary<string, object>).UserId (no field, long) Indexer Required PK FK Index AfterSave:Throw, 5] }
+            3 -> Dictionary<IProperty, int> { [Property: Role.Long (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 6], [Property: Role.Name (string) Required Index, 7] }
+            4 -> 4
+            5 -> 5
+            6 -> 6
+        SELECT u.ID, u.Email, u.Name, u.Password, t.RoleId, t.UserId, t.Long, t.Name
+        FROM Users AS u
+        LEFT JOIN 
+        (
+            SELECT u0.RoleId, u0.UserId, r.Long, r.Name
+            FROM UserRole AS u0
+            INNER JOIN Roles AS r ON u0.RoleId == r.Long
+        ) AS t ON u.ID == t.UserId
+        ORDER BY u.ID ASC, t.RoleId ASC, t.UserId ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, User>, 
+    AuthServer.AuthServerContext, 
+    False, 
+    False, 
+    True
+)'
+2024-11-05 20:46:27.448 -03:00 [DBG] Opening connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.450 -03:00 [DBG] Opened connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.450 -03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-11-05 20:46:27.451 -03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-11-05 20:46:27.452 -03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-11-05 20:46:27.452 -03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:46:27.456 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[ID], [u].[Email], [u].[Name], [u].[Password], [t].[RoleId], [t].[UserId], [t].[Long], [t].[Name]
+FROM [Users] AS [u]
+LEFT JOIN (
+    SELECT [u0].[RoleId], [u0].[UserId], [r].[Long], [r].[Name]
+    FROM [UserRole] AS [u0]
+    INNER JOIN [Roles] AS [r] ON [u0].[RoleId] = [r].[Long]
+) AS [t] ON [u].[ID] = [t].[UserId]
+ORDER BY [u].[ID], [t].[RoleId], [t].[UserId]
+2024-11-05 20:46:27.474 -03:00 [DBG] Context 'AuthServerContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:46:27.494 -03:00 [DBG] Context 'AuthServerContext' started tracking 'UserRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:46:27.504 -03:00 [DBG] Context 'AuthServerContext' started tracking 'Role' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-11-05 20:46:27.506 -03:00 [DBG] Closing data reader to 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.507 -03:00 [DBG] A data reader for 'AuthServer' on server 'localhost,1433' is being disposed after spending 49ms reading results.
+2024-11-05 20:46:27.508 -03:00 [DBG] Closing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.508 -03:00 [DBG] Closed connection to database 'AuthServer' on server 'localhost,1433' (0ms).
+2024-11-05 20:46:27.510 -03:00 [DBG] 'AuthServerContext' disposed.
+2024-11-05 20:46:27.511 -03:00 [DBG] Disposing connection to database 'AuthServer' on server 'localhost,1433'.
+2024-11-05 20:46:27.512 -03:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2024-11-05 20:46:27.567 -03:00 [INF] Now listening on: https://localhost:7011
+2024-11-05 20:46:27.568 -03:00 [INF] Now listening on: http://localhost:5091
+2024-11-05 20:46:27.568 -03:00 [DBG] Loaded hosting startup assembly AuthServer
+2024-11-05 20:46:27.569 -03:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-11-05 20:46:27.569 -03:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-11-05 20:46:27.570 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-05 20:46:27.570 -03:00 [INF] Hosting environment: Development
+2024-11-05 20:46:27.571 -03:00 [INF] Content root path: C:\Users\gusta\source\repos\AuthServer\AuthServer
+2024-11-05 20:46:27.571 -03:00 [DBG] Hosting started
+2024-11-05 20:46:27.982 -03:00 [DBG] Connection id "0HN7TUG8GUFC4" accepted.
+2024-11-05 20:46:27.982 -03:00 [DBG] Connection id "0HN7TUG8GUFC5" accepted.
+2024-11-05 20:46:27.984 -03:00 [DBG] Connection id "0HN7TUG8GUFC4" started.
+2024-11-05 20:46:27.984 -03:00 [DBG] Connection id "0HN7TUG8GUFC5" started.
+2024-11-05 20:46:27.998 -03:00 [DBG] Connection id "0HN7TUG8GUFC4" received FIN.
+2024-11-05 20:46:27.998 -03:00 [DBG] Connection id "0HN7TUG8GUFC5" received FIN.
+2024-11-05 20:46:28.002 -03:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-11-05 20:46:28.002 -03:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-11-05 20:46:28.011 -03:00 [DBG] Connection id "0HN7TUG8GUFC5" stopped.
+2024-11-05 20:46:28.011 -03:00 [DBG] Connection id "0HN7TUG8GUFC4" stopped.
+2024-11-05 20:46:28.014 -03:00 [DBG] Connection id "0HN7TUG8GUFC5" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:46:28.014 -03:00 [DBG] Connection id "0HN7TUG8GUFC4" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:46:28.033 -03:00 [DBG] Connection id "0HN7TUG8GUFC6" accepted.
+2024-11-05 20:46:28.034 -03:00 [DBG] Connection id "0HN7TUG8GUFC6" started.
+2024-11-05 20:46:28.061 -03:00 [DBG] Connection 0HN7TUG8GUFC6 established using the following protocol: "Tls13"
+2024-11-05 20:46:28.082 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.html - null null
+2024-11-05 20:46:28.121 -03:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-11-05 20:46:28.134 -03:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-11-05 20:46:28.135 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:46:28.181 -03:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-11-05 20:46:28.182 -03:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-11-05 20:46:28.187 -03:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-11-05 20:46:28.188 -03:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-11-05 20:46:28.191 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.html - 200 null text/html;charset=utf-8 109.2555ms
+2024-11-05 20:46:28.262 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/index.js - null null
+2024-11-05 20:46:28.264 -03:00 [DBG] No candidates found for the request path '/swagger/index.js'
+2024-11-05 20:46:28.265 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:46:28.267 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/index.js - 200 null application/javascript;charset=utf-8 4.7396ms
+2024-11-05 20:46:28.272 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-05 20:46:28.278 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_framework/aspnetcore-browser-refresh.js - 200 13756 application/javascript; charset=utf-8 6.2705ms
+2024-11-05 20:46:28.337 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/_vs/browserLink - null null
+2024-11-05 20:46:28.354 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.214ms
+2024-11-05 20:46:28.397 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - null null
+2024-11-05 20:46:28.399 -03:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-11-05 20:46:28.400 -03:00 [DBG] Request did not match any endpoints
+2024-11-05 20:46:28.466 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7011/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 69.1636ms
+2024-11-05 20:48:40.411 -03:00 [DBG] Connection id "0HN7TUG8GUFC6" is closing.
+2024-11-05 20:48:40.413 -03:00 [DBG] Connection id "0HN7TUG8GUFC6" is closed. The last processed stream ID was 9.
+2024-11-05 20:48:40.414 -03:00 [DBG] Connection id "0HN7TUG8GUFC6" received FIN.
+2024-11-05 20:48:40.415 -03:00 [DBG] Connection id "0HN7TUG8GUFC6" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-11-05 20:48:40.427 -03:00 [DBG] The connection queue processing loop for 0HN7TUG8GUFC6 completed.
+2024-11-05 20:48:40.429 -03:00 [DBG] Connection id "0HN7TUG8GUFC6" stopped.
