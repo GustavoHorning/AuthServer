@@ -4,17 +4,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Security.Claims;
-using System.Transactions; // Não se esqueça de adicionar o namespace
+using System.Transactions; 
 using Microsoft.IdentityModel.JsonWebTokens;
 
 
 
 namespace AuthServer.Users
 {
-    [ApiController] // Define que esse controlador é uma API REST
+    [ApiController] 
 
-    // Isso é equivalente a @RequestMapping("/users")
-    // Define a rota base como /api/users
+   
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
@@ -72,10 +71,10 @@ namespace AuthServer.Users
             var loginResponse = _service.Login(credentials);
             if (loginResponse != null)
             {
-                return Ok(loginResponse); // Retorna o LoginResponse diretamente
+                return Ok(loginResponse); 
             }
 
-            return Unauthorized(); // Retorna 401 se as credenciais estiverem incorretas
+            return Unauthorized(); 
         }
 
 
@@ -87,32 +86,32 @@ namespace AuthServer.Users
             var result = _service.Delete(id);
             if (!result)
             {
-                return NotFound(); // Retorna 404 se a exclusão não for permitida
+                return NotFound(); 
             }
-            return Ok(); // Retorna 200 se a exclusão for realizada com sucesso
+            return Ok(); 
         }
 
         [HttpGet("me")]
-        [Authorize] // Certifique-se de que apenas usuários autenticados possam acessar
+        [Authorize] 
         public IActionResult GetSelf()
         {
-            // Obtém o ID do usuário do token
+          
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
 
             if (userIdClaim == null)
             {
-                return Unauthorized(); // Retorna 401 se o usuário não estiver autenticado
+                return Unauthorized(); 
             }
 
-            long userId = long.Parse(userIdClaim.Value); // Converte o ID para long
-            var user = _service.GetById(userId); // Chama o método GetById para obter o usuário
+            long userId = long.Parse(userIdClaim.Value); 
+            var user = _service.GetById(userId); 
 
             if (user == null)
             {
-                return NotFound(); // Retorna 404 se o usuário não for encontrado
+                return NotFound(); 
             }
 
-            return Ok(user.ToResponse()); // Retorna o usuário autenticado
+            return Ok(user.ToResponse()); 
         }
 
     }

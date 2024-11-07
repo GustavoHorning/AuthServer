@@ -8,9 +8,8 @@ namespace AuthServer.Users
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Long { get; set; }
-        [Required] // Garante que o campo não seja nulo
+        [Required] // [required] garante que o campo não seja nulo, e [key] serve para definir primary key
         public string Name { get; set; } = string.Empty;
-        // Relacionamento muitos-para-muitos com User
         public HashSet<User> Users { get; set; } = new HashSet<User>();
 
     }

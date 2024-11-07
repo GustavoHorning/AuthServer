@@ -1,7 +1,7 @@
 ﻿using AuthServer.Users.requests;
 using AuthServer.Users.responses;
 using AuthServer.Security;
-using AuthServer; // Ou o namespace específico onde Jwt está localizada
+using AuthServer; 
 
 
 
@@ -9,14 +9,14 @@ namespace AuthServer.Users
 {
     public class UsersService
     {
-        private readonly UsersRepository _repository;
-        private readonly RoleRepository _roleRepository;
+        private readonly IUsersRepository _repository;
+        private readonly IRoleRepository _roleRepository;
         private readonly ILogger<UsersService> _logger;
-        private readonly Jwt _jwt;
+        private readonly IJwt _jwt;
 
 
-        // Injeção de dependência via construtor
-        public UsersService(Jwt jwt,UsersRepository repository, RoleRepository roleRepository, ILogger<UsersService> logger)
+        public UsersService(IJwt jwt,IUsersRepository repository, IRoleRepository roleRepository, 
+            ILogger<UsersService> logger)
         {
             _jwt = jwt;
             _repository = repository;
@@ -33,7 +33,6 @@ namespace AuthServer.Users
                 Name = req.Name
             };
 
-            // Verifica se há usuários no banco
             if (_repository.FindAll().Count == 0)
             {
                 // Se for o primeiro usuário, atribui a role "ADMIN"
@@ -72,7 +71,7 @@ namespace AuthServer.Users
             if (user == null || user.Password != credentials.Password)
             {
                 _logger.LogWarning("Failed login attempt for email: {Email}", credentials.Email);
-                return null; // Retorna null se o usuário não existir ou a senha estiver incorreta
+                return null;
             }
             _logger.LogInformation("User logged in. id={Id} name={Name}", user.ID, user.Name);
             var token = _jwt.CreateToken(user);
@@ -81,24 +80,20 @@ namespace AuthServer.Users
 
         public bool Delete(long id)
         {
-            // Obtém o usuário a ser excluído
             var user = _repository.GetById(id);
 
             if (user == null)
             {
                 _logger.LogWarning("Attempted to delete non-existing user. id={Id}", id);
-                return false; // Retorna false se o usuário não for encontrado
+                return false; 
             }
 
-            // Verifica se o usuário possui a role de "ADMIN"
             if (user.Roles.Any(r => r.Name == "ADMIN"))
             {
-                // Conta quantos administradores estão associados
                 var adminCount = _repository.FindAll()
                     .Where(u => u.Roles.Any(r => r.Name == "ADMIN"))
                     .Count();
 
-                // Verifica se o usuário é o único administrador
                 if (adminCount <= 1)
                 {
                     _logger.LogWarning("Attempted to delete the last system admin. id={Id}", id);
@@ -106,44 +101,10 @@ namespace AuthServer.Users
                 }
             }
 
-            // Se a exclusão foi permitida, deleta o usuário
-            _repository.Delete(user); // Deleta o usuário
+            _repository.Delete(user);
             _logger.LogWarning("User deleted. id={Id} name={Name}", user.ID, user.Name);
-            return true; // Retorna true se a exclusão foi bem-sucedida
+            return true;
         }
 
-
-
-
-
-        //public bool Delete(long id)
-        //{
-        //    // Obtém o usuário a ser excluído
-        //    var user = _repository.GetById(id);
-
-        //    if (user == null)
-        //    {
-        //        return false; // Retorna false se o usuário não for encontrado
-        //    }
-
-        //    // Verifica se o usuário possui a role de "ADMIN"
-        //    if (user.Roles.Any(r => r.Name == "ADMIN"))
-        //    {
-        //        // Conta quantos administradores estão associados
-        //        var adminCount = _repository.FindAll()
-        //            .Where(u => u.Roles.Any(r => r.Name == "ADMIN"))
-        //            .Count();
-
-        //        // Verifica se o usuário é o único administrador
-        //        if (adminCount <= 1)
-        //        {
-        //            return false; // Não pode excluir o último administrador
-        //        }
-        //    }
-
-        //    // Se a exclusão foi permitida, deleta o usuário
-        //    _repository.Delete(user); // Deleta o usuário
-        //    return true; // Retorna true se a exclusão foi bem-sucedida
-        //}
     }
 }

@@ -10,30 +10,27 @@ namespace AuthServer
         {
         }
 
-        public DbSet<User> Users { get; set; } // DbSet para a entidade User
-        public DbSet<Role> Roles { get; set; } // DbSet para a entidade Roles
+        public DbSet<User> Users { get; set; } 
+        public DbSet<Role> Roles { get; set; } 
 
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Mapeando a classe User para a tabela "Users"
             modelBuilder.Entity<User>().ToTable("Users");
 
-            // Configurando o índice único para o campo Email
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
-                .IsUnique(); // Define que o índice deve ser único
+                .IsUnique();
 
-            //Configuração da entidade Role e índice único para Name
             modelBuilder.Entity<Role>()
-            .ToTable("Roles") // Opcional: define o nome da tabela como "Roles"
+            .ToTable("Roles") 
             .HasIndex(r => r.Name)
-            .IsUnique(); // Define que o índice do campo Name deve ser únicomodelBuilder.Entity<Role>()
+            .IsUnique(); 
 
 
-            // Configurando a relação muitos-para-muitos entre User e Role
+            
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Roles)
                 .WithMany(r => r.Users)

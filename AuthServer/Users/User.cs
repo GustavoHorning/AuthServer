@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AuthServer.Users
 {
-    [Table("TblUser")] // Define o nome da tabela como "TblUser"
+    [Table("TblUser")] 
     public class User
     {
 
@@ -13,7 +13,7 @@ namespace AuthServer.Users
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
 
-        [Required] // Validação para não permitir valor nulo
+        [Required] 
         [EmailAddress] // Validação para garantir que o campo seja um email
         public string Email { get; set; }
 
@@ -23,7 +23,6 @@ namespace AuthServer.Users
         [Required] // Garante que o campo não seja nulo
         public string Name { get; set; } = string.Empty;
 
-        // Relacionamento muitos-para-muitos com Role
         public HashSet<Role> Roles { get; set; } = new HashSet<Role>();
         public UserResponse ToResponse()
         {

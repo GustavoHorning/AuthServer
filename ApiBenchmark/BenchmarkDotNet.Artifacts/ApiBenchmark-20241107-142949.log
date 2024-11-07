@@ -1,0 +1,113 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 1 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true /p:IntermediateOutputPath="C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\obj\Release\net8.0/" /p:OutDir="C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\bin\Release\net8.0/" /p:OutputPath="C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\bin\Release\net8.0/" in C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965
+// command took 0.98 sec and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true /p:IntermediateOutputPath="C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\obj\Release\net8.0/" /p:OutDir="C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\bin\Release\net8.0/" /p:OutputPath="C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\bin\Release\net8.0/" --output "C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\bin\Release\net8.0/" in C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965
+// command took 3.64 sec and exited with 0
+// ***** Done, took 00:00:04 (4.66 sec)   *****
+// Found 1 benchmarks:
+//   ApiBenchmark.GetUsersMe: DefaultJob
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: Alto desempenho)
+// **************************
+// Benchmark: ApiBenchmark.GetUsersMe: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet 3ad32361-1077-4462-9173-5cf7f6b6d965.dll --anonymousPipes 1408 1412 --benchmarkName ApiBenchmark.GetUsersMe --job Default --benchmarkId 0 in C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\bin\Release\net8.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.14.0
+// Runtime=.NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 149900.00 ns, 149.9000 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Net.Http.HttpRequestException: Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente. (localhost:7011)
+ ---> System.Net.Sockets.SocketException (10061): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at ApiBenchmark.GetUsersMe() in C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\Program.cs:line 27
+   at BenchmarkDotNet.Helpers.AwaitHelper.GetResult(Task task)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.<.ctor>b__3_4() in C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\3ad32361-1077-4462-9173-5cf7f6b6d965.notcs:line 197
+   at BenchmarkDotNet.Autogenerated.Runnable_0.WorkloadActionNoUnroll(Int64 invokeCount) in C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\3ad32361-1077-4462-9173-5cf7f6b6d965.notcs:line 311
+   at BenchmarkDotNet.Engines.Engine.Measure(Action`1 action, Int64 invokeCount)
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.Run(IHost host, String benchmarkName) in C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\3ad32361-1077-4462-9173-5cf7f6b6d965.notcs:line 176
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in C:\Users\gusta\source\repos\AuthServer\ApiBenchmark\bin\Release\net8.0\3ad32361-1077-4462-9173-5cf7f6b6d965\3ad32361-1077-4462-9173-5cf7f6b6d965.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 20004 has exited with code -1.
+
+// ** Remained 0 (0,0%) benchmark(s) to run. Estimated finish 2024-11-07 14:29 (0h 0m from now) **
+Successfully reverted power plan (GUID: 381b4222-f694-41f0-9685-ff5bb260df2e FriendlyName: Equilibrado)
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts\results\ApiBenchmark-report.csv
+  BenchmarkDotNet.Artifacts\results\ApiBenchmark-report-github.md
+  BenchmarkDotNet.Artifacts\results\ApiBenchmark-report.html
+
+// * Detailed results *
+ApiBenchmark.GetUsersMe: DefaultJob
+Runtime = .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+// * Summary *
+
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.4391/23H2/2023Update/SunValley3)
+AMD Ryzen 5 5600H with Radeon Graphics, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 8.0.303
+  [Host]     : .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+  DefaultJob : .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+
+
+| Method     | Mean | Error |
+|----------- |-----:|------:|
+| GetUsersMe |   NA |    NA |
+
+Benchmarks with issues:
+  ApiBenchmark.GetUsersMe: DefaultJob
+
+// * Warnings *
+Environment
+  Summary -> Detected error exit code from one of the benchmarks. It might be caused by following antivirus software:
+        - Windows Defender (windowsdefender://)
+Use InProcessEmitToolchain or InProcessNoEmitToolchain to avoid new process creation.
+
+
+// * Legends *
+  Mean  : Arithmetic mean of all measurements
+  Error : Half of 99.9% confidence interval
+  1 ns  : 1 Nanosecond (0.000000001 sec)
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:04 (4.38 sec), executed benchmarks: 1
+
+Global total time: 00:00:09 (9.22 sec), executed benchmarks: 1
+// * Artifacts cleanup *
+Artifacts cleanup is finished

@@ -14,11 +14,9 @@ namespace AuthServer
     {
         public static void Main(string[] args)
         {
-            // Diretório de logs na raiz do projeto
-            var projectDirectory = @"C:\Users\gusta\source\repos\AuthServer\AuthServer"; // Altere para o caminho base do projeto
+            var projectDirectory = @"C:\Users\gusta\source\repos\AuthServer\AuthServer";
             var logDirectory = Path.Combine(projectDirectory, "Logs");
 
-            // Verificação e criação do diretório de logs
             Console.WriteLine($"Verificando diretório de logs: {logDirectory}");
             if (!Directory.Exists(logDirectory))
             {
@@ -37,33 +35,27 @@ namespace AuthServer
                 Console.WriteLine("Diretório de logs já existe.");
             }
 
-            // Caminho completo do arquivo de log
             var logFilePath = Path.Combine(logDirectory, "application.log");
             Console.WriteLine($"Caminho completo do arquivo de log: {logFilePath}");
 
-            // Configuração do Serilog para console e arquivo de log
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.Console()  // Console logging
+                .WriteTo.Console()  
                 .WriteTo.File(logFilePath, rollingInterval: RollingInterval.Day, retainedFileCountLimit: 7)
                 .CreateLogger();
 
-            // Log de inicialização
             Log.Information("Aplicação iniciada - configuração de logs inicializada.");
 
             try
             {
                 var builder = WebApplication.CreateBuilder(args);
 
-                // Configura Serilog para o projeto inteiro
                 builder.Host.UseSerilog();
 
-                // Configuração da string de conexão
                 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
                 builder.Services.AddDbContext<AuthServerContext>(options =>
                     options.UseSqlServer(connectionString));
 
-                // Adiciona serviços ao container
                 builder.Services.AddControllers();
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
@@ -77,6 +69,10 @@ namespace AuthServer
                 builder.Services.AddTransient<RoleRepository>();
                 builder.Services.Configure<SecuritySettings>(builder.Configuration.GetSection("Security"));
                 builder.Services.AddSingleton<Jwt>();
+                builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+                builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+                builder.Services.AddScoped<IJwt, Jwt>();
+
 
 
 
@@ -84,7 +80,6 @@ namespace AuthServer
 
                 var app = builder.Build();
 
-                // Configurações de desenvolvimento
                 if (app.Environment.IsDevelopment())
                 {
                     app.UseSwagger();
@@ -98,7 +93,6 @@ namespace AuthServer
                 app.UseAuthorization();
                 app.MapControllers();
 
-                // Exceções personalizadas
                 app.Use(async (context, next) =>
                 {
                     try

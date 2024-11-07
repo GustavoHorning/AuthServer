@@ -38,7 +38,7 @@ namespace AuthServer.Users
                             Name = "Auth Server Administrator",
                         };
 
-                        adminUser.Roles.Add(adminRole); // Adiciona a role ao usuário
+                        adminUser.Roles.Add(adminRole);
                         userRepository.Save(adminUser);
                     }
                 }
